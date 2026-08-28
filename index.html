@@ -3,695 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MIZUHO Institute | Education Management Portal</title>
+<meta name="description" content="MIZUHO Institute education and academic management portal">
+<title>MIZUHO Institute | Education Portal</title>
 <link rel="icon" href="mizuho-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 <style>
-:root{
-  --navy:#0b2b55;
-  --navy-2:#123e73;
-  --blue:#1669b2;
-  --blue-2:#0f84c7;
-  --gold:#c8942e;
-  --gold-soft:#e8c46d;
-  --green:#16845b;
-  --red:#c83c3c;
-  --bg:#f5f8fc;
-  --card:#fff;
-  --text:#15263d;
-  --muted:#6b7b90;
-  --border:#dfe7f0;
-  --sidebar:#082348;
-  --shadow:0 16px 45px rgba(11,43,85,.09);
-  --radius:18px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg); color:var(--text);
-  overflow-x:hidden;
-}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.hidden{display:none!important}
-
-/* Landing */
-.landing{min-height:100vh;background:#fff}
-.topbar{
-  position:sticky;top:0;z-index:1000;
-  background:rgba(8,35,72,.96);backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.nav{
-  max-width:1320px;margin:auto;padding:12px 5%;
-  min-height:76px;display:flex;align-items:center;gap:30px;
-}
-.brand{display:flex;align-items:center;gap:12px;color:white;min-width:max-content}
-.brand img{width:54px;height:54px;object-fit:contain}
-.brand-text strong{display:block;font-size:19px;letter-spacing:.7px}
-.brand-text span{display:block;color:#d8b15a;font-size:10px;letter-spacing:3px;font-weight:700;margin-top:2px}
-.navlinks{display:flex;gap:24px;margin-left:auto}
-.navlinks a{color:#d9e5f2;font-size:13px;font-weight:600}
-.navlinks a:hover{color:#f1cf7a}
-.nav-actions{display:flex;gap:9px}
-.btn{
-  border:0;border-radius:11px;padding:11px 17px;
-  background:var(--blue);color:white;font-weight:700;
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  transition:.2s ease;box-shadow:0 8px 18px rgba(22,105,178,.16)
-}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.btn.gold{background:var(--gold);color:#102746}
-.btn.outline{background:transparent;border:1px solid rgba(255,255,255,.25);box-shadow:none}
-.btn.light{background:#edf4fb;color:var(--navy);box-shadow:none}
-.btn.danger{background:var(--red)}
-.btn.success{background:var(--green)}
-
-.hero{
-  min-height:690px;position:relative;overflow:hidden;
-  background:
-    radial-gradient(circle at 85% 18%,rgba(200,148,46,.14),transparent 28%),
-    radial-gradient(circle at 8% 80%,rgba(22,105,178,.12),transparent 30%),
-    linear-gradient(135deg,#071f3f 0%,#0b2b55 52%,#0f4478 100%);
-  color:white;
-}
-.hero:before{
-  content:"";position:absolute;width:650px;height:650px;border:1px solid rgba(232,196,109,.15);
-  border-radius:50%;right:-260px;top:-260px;
-}
-.hero:after{
-  content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;left:-280px;bottom:-300px;
-}
-.hero-inner{
-  max-width:1320px;margin:auto;min-height:690px;padding:70px 5%;
-  display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px;position:relative;z-index:2;
-}
-.hero-copy{animation:rise .7s ease}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:30px;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
-  color:#e8c46d;font-size:12px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;
-}
-.hero h1{
-  font-family:"Playfair Display",serif;font-size:clamp(2.7rem,5vw,5rem);
-  line-height:1.03;margin:22px 0 18px;max-width:760px
-}
-.hero h1 span{color:#e8c46d}
-.hero p{max-width:660px;color:#c5d5e8;line-height:1.75;font-size:16px}
-.hero-buttons{display:flex;gap:12px;margin:30px 0 30px;flex-wrap:wrap}
-.hero-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:650px}
-.hero-point{display:flex;align-items:center;gap:10px;color:#dbe7f4;font-size:13px}
-.hero-point i{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:rgba(200,148,46,.16);color:#e8c46d}
-
-.hero-visual{display:flex;justify-content:center;align-items:center;position:relative;animation:rise .9s ease;min-height:560px}
-.logo-card{width:min(430px,80vw);aspect-ratio:1/1;border-radius:50%;background:rgba(255,255,255,.97);border:7px solid rgba(200,148,46,.8);box-shadow:0 30px 80px rgba(0,0,0,.3),0 0 0 14px rgba(255,255,255,.06);display:grid;place-items:center;overflow:hidden;position:relative;z-index:2;animation:logoFloat 6s ease-in-out infinite}
-.logo-card img{width:90%;height:90%;object-fit:contain}
-.floating-card{position:absolute;background:rgba(255,255,255,.97);color:var(--navy);border:1px solid rgba(255,255,255,.5);box-shadow:0 18px 45px rgba(0,0,0,.25),0 0 24px rgba(232,196,109,.18);border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;white-space:nowrap;z-index:4;will-change:transform}
-.floating-card::after{content:"";position:absolute;inset:-6px;border-radius:20px;border:1px solid rgba(232,196,109,.18);pointer-events:none}
-.floating-card i{color:var(--gold);font-size:15px}
-.fc1{left:-8px;top:17%;animation:floatLeft 4.8s ease-in-out infinite}
-.fc2{right:-8px;bottom:18%;animation:floatRight 5.4s ease-in-out infinite .4s}
-.fc1::before,.fc2::before{content:"";position:absolute;width:120px;height:90px;border:1.5px dashed rgba(232,196,109,.55);border-left-color:transparent;border-bottom-color:transparent;z-index:-1}
-.fc1::before{right:-92px;bottom:-55px;transform:rotate(18deg);border-radius:0 70px 0 0}
-.fc2::before{left:-92px;top:-55px;transform:rotate(198deg);border-radius:0 70px 0 0}
-.hero-visual::before{content:"";position:absolute;width:470px;height:470px;border-radius:50%;border:1px dashed rgba(232,196,109,.25);animation:spinSlow 22s linear infinite}
-.hero-visual::after{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(232,196,109,.12),transparent 62%);filter:blur(8px);animation:pulseGlow 4s ease-in-out infinite}
-.floating-card:hover{animation-play-state:paused;transform:translateY(-8px) scale(1.03)}
-
-.section{padding:90px 5%}
-.section-inner{max-width:1320px;margin:auto}
-.section-head{text-align:center;max-width:700px;margin:0 auto 48px}
-.kicker{color:var(--gold);font-weight:800;font-size:11px;letter-spacing:2px;text-transform:uppercase}
-.section-head h2{font-family:"Playfair Display",serif;font-size:38px;color:var(--navy);margin:10px 0}
-.section-head p{color:var(--muted);line-height:1.7}
-.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.program-card{
-  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:27px;box-shadow:var(--shadow);transition:.25s
-}
-.program-card:hover{transform:translateY(-5px);border-color:#c7d8ea}
-.program-icon{width:52px;height:52px;border-radius:14px;background:#eaf3fb;color:var(--blue);display:grid;place-items:center;font-size:21px;margin-bottom:18px}
-.program-card h3{font-size:18px;margin-bottom:9px}
-.program-card p{font-size:13px;color:var(--muted);line-height:1.65}
-.program-card .tag{display:inline-block;margin-top:18px;color:var(--gold);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px}
-
-.about{
-  background:linear-gradient(180deg,#eef4fa,#f8fbfe);
-}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
-.about-copy h2{font-family:"Playfair Display",serif;font-size:39px;color:var(--navy);margin:10px 0 16px}
-.about-copy p{color:var(--muted);line-height:1.75;margin-bottom:18px}
-.about-list{display:grid;gap:12px;margin-top:20px}
-.about-list div{display:flex;gap:11px;align-items:flex-start;font-size:13px}
-.about-list i{color:var(--green);margin-top:3px}
-.about-panel{
-  background:var(--navy);border-radius:26px;padding:32px;color:white;
-  box-shadow:0 25px 60px rgba(8,35,72,.2)
-}
-.about-panel h3{font-size:19px;margin-bottom:20px}
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{padding:20px;border-radius:15px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09)}
-.stat strong{font-size:28px;color:#e8c46d;display:block}.stat span{font-size:11px;color:#b9cce0}
-
-.cta{
-  padding:75px 5%;background:var(--navy);color:white;text-align:center
-}
-.cta h2{font-family:"Playfair Display",serif;font-size:38px;margin-bottom:12px}
-.cta p{color:#bfd0e3;max-width:650px;margin:0 auto 24px;line-height:1.7}
-
-.footer{background:#061a33;color:#9fb2c9;padding:55px 5% 25px}
-.footer-grid{max-width:1320px;margin:auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:35px}
-.footer h4{color:white;font-size:13px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:16px}
-.footer p,.footer li,.footer a{font-size:12px;line-height:1.7}
-.footer ul{list-style:none;display:grid;gap:8px}
-.footer a:hover{color:#e8c46d}
-.footer-brand{display:flex;align-items:center;gap:10px;color:white;margin-bottom:12px}
-.footer-brand img{width:48px;height:48px}.footer-brand strong{font-size:17px}
-.footer-bottom{max-width:1320px;margin:35px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:15px;font-size:11px}
-
-/* Login */
-.login-page{
-  min-height:100vh;background:
-  radial-gradient(circle at 20% 20%,rgba(200,148,46,.15),transparent 25%),
-  linear-gradient(135deg,#071f3f,#0b2b55 65%,#123e73);
-  display:grid;place-items:center;padding:30px;
-}
-.login-box{
-  width:min(1050px,100%);display:grid;grid-template-columns:1fr 410px;
-  background:rgba(255,255,255,.97);border-radius:26px;overflow:hidden;
-  box-shadow:0 35px 90px rgba(0,0,0,.3)
-}
-.login-brand{padding:55px;background:linear-gradient(145deg,#0b2b55,#123e73);color:white;position:relative}
-.login-brand img{width:145px;height:145px;background:white;border-radius:50%;padding:5px;display:block;margin-bottom:25px}
-.login-brand h1{font-family:"Playfair Display",serif;font-size:42px;margin-bottom:10px}
-.login-brand p{color:#c3d4e7;line-height:1.7;max-width:470px}
-.login-brand .mini{display:grid;gap:11px;margin-top:28px}
-.login-brand .mini div{font-size:12px;display:flex;gap:9px;align-items:center}.mini i{color:#e8c46d}
-.login-form{padding:45px}
-.login-form h2{font-size:24px;color:var(--navy);margin-bottom:7px}.login-form>p{font-size:12px;color:var(--muted);margin-bottom:28px}
-.field{margin-bottom:15px}.field label{font-size:11px;font-weight:800;color:#506176;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px}
-.input{
-  width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:10px;background:#f8fbfe;outline:none;color:var(--text)
-}
-.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(22,105,178,.09)}
-.login-form .btn{width:100%;margin-top:8px}
-.demo{font-size:11px;color:var(--muted);margin-top:15px;padding:10px;background:#f1f6fb;border-radius:9px}
-.back{display:block;text-align:center;color:var(--blue);font-size:12px;margin-top:18px}
-
-/* Dashboard */
-.dashboard{min-height:100vh;background:var(--bg);display:none}
-.dashboard-shell{display:flex;min-height:100vh}
-.sidebar{
-  width:265px;background:var(--sidebar);color:white;padding:18px 14px;
-  position:sticky;top:0;height:100vh;flex-shrink:0;display:flex;flex-direction:column;transition:.25s
-}
-.sidebar.collapsed{width:82px}
-.side-brand{display:flex;align-items:center;gap:10px;padding:8px 9px 20px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:15px}
-.side-brand img{width:45px;height:45px;background:white;border-radius:50%;padding:2px}.side-brand strong{font-size:15px}.side-brand span{display:block;color:#e8c46d;font-size:8px;letter-spacing:1.6px}
-.sidebar.collapsed .side-brand div,.sidebar.collapsed .nav-label,.sidebar.collapsed .user-meta{display:none}
-.side-toggle{width:100%;padding:9px;background:rgba(255,255,255,.06);color:white;border:1px solid rgba(255,255,255,.08);border-radius:9px;margin-bottom:12px}
-.side-nav{display:grid;gap:5px}.side-nav a{
-  padding:11px 12px;border-radius:9px;color:#c6d5e5;font-size:12px;font-weight:600;display:flex;gap:11px;align-items:center
-}
-.side-nav a i{width:18px;text-align:center}.side-nav a:hover,.side-nav a.active{background:#155b9d;color:white}
-.sidebar.collapsed .side-nav a{justify-content:center}
-.side-bottom{margin-top:auto;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
-.user-chip{display:flex;gap:9px;align-items:center;padding:10px;background:rgba(255,255,255,.05);border-radius:10px;margin-bottom:8px}
-.user-avatar{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#d9b65c;color:#102746;font-weight:800;font-size:11px}
-.user-meta strong{display:block;font-size:11px}.user-meta span{font-size:9px;color:#9fb2c9}
-
-.main{flex:1;min-width:0;padding:30px}
-.top-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:25px}
-.top-head h1{font-size:25px;color:var(--navy)}.top-head p{font-size:12px;color:var(--muted);margin-top:4px}
-.head-actions{display:flex;gap:8px}.icon-btn{border:1px solid var(--border);background:white;color:var(--navy);width:38px;height:38px;border-radius:10px}
-.icon-btn:hover{background:#edf4fb}
-.content-section{display:none;animation:fade .25s ease}.content-section.active{display:block}
-
-.dashboard-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px}
-.d-card{background:white;border:1px solid var(--border);border-radius:15px;padding:20px;box-shadow:0 8px 25px rgba(11,43,85,.04)}
-.d-card .d-top{display:flex;justify-content:space-between;align-items:center}.d-card i{font-size:18px;color:var(--blue);background:#edf5fc;padding:10px;border-radius:10px}
-.d-card h3{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:17px 0 5px}.d-card strong{font-size:27px;color:var(--navy)}
-.d-card small{font-size:10px;color:var(--green);font-weight:700}
-
-.grid2{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
-.panel{background:white;border:1px solid var(--border);border-radius:15px;overflow:hidden;margin-bottom:18px}
-.panel-head{padding:17px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px}
-.panel-head h3{font-size:14px;color:var(--navy)}.panel-head span{font-size:10px;color:var(--muted)}
-.panel-body{padding:18px}
-.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.quick{padding:15px;border:1px solid var(--border);border-radius:11px;background:#fbfdff;text-align:left}
-.quick i{color:var(--blue);margin-bottom:10px}.quick strong{display:block;font-size:12px}.quick span{font-size:10px;color:var(--muted)}
-.bar-chart{height:225px;display:flex;align-items:flex-end;gap:13px;padding:10px 4px 0;border-bottom:1px solid var(--border)}
-.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end}.bar-fill{width:70%;max-width:45px;background:linear-gradient(#1b7fc0,#0d4e91);border-radius:7px 7px 0 0;min-height:8px}.bar label{font-size:9px;color:var(--muted)}.bar b{font-size:9px;color:var(--navy)}
-.notice{display:flex;gap:10px;padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:9px;background:#fbfdff}.notice i{color:var(--gold);margin-top:2px}.notice strong{font-size:11px;display:block}.notice span{font-size:9px;color:var(--muted)}
-
-.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.toolbar-left{display:flex;gap:8px;flex-wrap:wrap}.search{width:250px;padding:10px 12px;border:1px solid var(--border);border-radius:9px;outline:none;background:white}
-.select{padding:10px 12px;border:1px solid var(--border);border-radius:9px;background:white;color:var(--text)}
-.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:13px;background:white}
-table{width:100%;border-collapse:collapse;min-width:760px}th{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);text-align:left;background:#f7fafc;padding:13px;border-bottom:1px solid var(--border)}td{font-size:11px;padding:13px;border-bottom:1px solid var(--border)}tr:last-child td{border-bottom:0}tr:hover td{background:#fbfdff}
-.badge{padding:4px 8px;border-radius:30px;font-size:9px;font-weight:800}.b-green{background:#e7f6ef;color:var(--green)}.b-blue{background:#e8f2fb;color:var(--blue)}.b-gold{background:#fbf2dc;color:#996d13}.b-red{background:#fae8e8;color:var(--red)}
-.actions{display:flex;gap:5px}.act{border:0;width:28px;height:28px;border-radius:7px;background:#eef4f9;color:var(--blue)}.act.del{color:var(--red)}
-
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-grid .full{grid-column:1/-1}
-.form-label{display:block;font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;margin-bottom:6px}
-textarea.input{min-height:90px;resize:vertical}
-.modal-bg{position:fixed;inset:0;background:rgba(5,23,46,.55);backdrop-filter:blur(5px);display:none;place-items:center;z-index:3000;padding:20px}
-.modal-bg.show{display:grid}.modal{width:min(560px,100%);background:white;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.25);overflow:hidden}
-.modal-head{padding:17px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.modal-head h3{font-size:15px;color:var(--navy)}.close{border:0;background:none;color:var(--muted);font-size:18px}
-.modal-body{padding:20px}.modal-foot{padding:15px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
-
-.toast{position:fixed;right:22px;bottom:22px;background:#0d6b4c;color:white;padding:13px 17px;border-radius:10px;box-shadow:0 15px 35px rgba(0,0,0,.2);font-size:12px;font-weight:700;transform:translateY(100px);opacity:0;transition:.25s;z-index:5000}.toast.show{transform:translateY(0);opacity:1}.toast.error{background:var(--red)}
-
-@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes floatLeft{0%,100%{transform:translate3d(0,0,0) rotate(-1deg)}25%{transform:translate3d(-12px,-18px,0) rotate(-2deg)}50%{transform:translate3d(5px,-30px,0) rotate(1deg)}75%{transform:translate3d(14px,-12px,0) rotate(2deg)}}
-@keyframes floatRight{0%,100%{transform:translate3d(0,0,0) rotate(1deg)}25%{transform:translate3d(13px,14px,0) rotate(2deg)}50%{transform:translate3d(-5px,28px,0) rotate(-1deg)}75%{transform:translate3d(-14px,10px,0) rotate(-2deg)}}
-@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes spinSlow{to{transform:rotate(360deg)}}
-@keyframes pulseGlow{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
-
-@media(max-width:1050px){
-  .navlinks{display:none}.hero-inner{grid-template-columns:1fr;text-align:center}.hero-copy p{margin:auto}.hero-points{margin:auto}.hero-buttons{justify-content:center}.hero-visual{margin-top:15px}
-  .program-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.login-box{grid-template-columns:1fr}
-  .login-brand{display:none}.dashboard-cards{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}
-}
-@media(max-width:720px){
-  .nav{padding:9px 4%}.nav-actions .btn:first-child{display:none}.brand img{width:44px;height:44px}
-  .hero-inner{padding:55px 5%}.hero h1{font-size:2.7rem}.hero-points{grid-template-columns:1fr;text-align:left}
-  .logo-card{width:310px}.hero-visual{min-height:430px}.hero-visual::before{width:350px;height:350px}.hero-visual::after{width:400px;height:400px}.fc1{left:0;top:7%}.fc2{right:0;bottom:7%}.floating-card{font-size:11px;padding:11px 13px}
-  .section{padding:65px 5%}.program-grid,.about-grid{grid-template-columns:1fr}.section-head h2,.about-copy h2,.cta h2{font-size:31px}
-  .footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}
-  .login-page{padding:12px}.login-form{padding:28px 22px}
-  .sidebar{position:fixed;z-index:2000;width:245px;transform:translateX(-100%);height:100vh}.sidebar.mobile-open{transform:translateX(0)}
-  .sidebar.collapsed{width:245px}.sidebar.collapsed .side-brand div,.sidebar.collapsed .nav-label,.sidebar.collapsed .user-meta{display:block}
-  .main{padding:20px 13px}.mobile-menu{display:block!important}
-  .dashboard-cards{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}
-  .top-head h1{font-size:21px}
-}
-.mobile-menu{display:none}
-@media (prefers-reduced-motion:reduce){.floating-card,.logo-card,.hero-visual::before,.hero-visual::after{animation:none!important}}
+:root{--navy:#082b55;--navy2:#123f73;--blue:#176db5;--blue2:#0e8bc9;--gold:#c8942e;--gold2:#e8c56e;--green:#15845b;--red:#c83d45;--orange:#d87a19;--bg:#f4f7fb;--card:#fff;--text:#17283e;--muted:#6d7d91;--line:#dce5ef;--sidebar:#062348;--shadow:0 18px 50px rgba(8,43,85,.10);--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.hidden{display:none!important}
+.btn{border:0;border-radius:11px;padding:12px 18px;background:var(--blue);color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s;box-shadow:0 8px 20px rgba(23,109,181,.16)}.btn:hover{transform:translateY(-2px)}.btn.gold{background:var(--gold);color:#fff}.btn.outline{background:transparent;border:1px solid rgba(255,255,255,.38);box-shadow:none}.btn.light{background:#edf5fc;color:var(--navy);box-shadow:none}.btn.danger{background:var(--red)}.btn.small{padding:8px 11px;font-size:12px}.icon-btn{border:1px solid var(--line);background:#fff;color:var(--navy);width:40px;height:40px;border-radius:10px;display:grid;place-items:center}.icon-btn:hover{background:#eef5fb}
+.toast{position:fixed;right:22px;bottom:22px;z-index:5000;min-width:290px;max-width:420px;background:#092d55;color:#fff;padding:14px 16px;border-radius:13px;box-shadow:0 16px 40px rgba(0,0,0,.18);display:flex;gap:10px;align-items:flex-start;opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}.toast.error{background:#9d2933}.toast.success{background:#126a4c}
+.topbar{position:sticky;top:0;z-index:1000;background:rgba(6,35,72,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}.nav{max-width:1320px;margin:auto;padding:10px 5%;min-height:76px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:11px;color:#fff;min-width:max-content}.brand img{width:55px;height:55px;object-fit:contain}.brand strong{font-size:19px;letter-spacing:.5px;display:block}.brand small{display:block;color:#e1bc61;font-size:9px;letter-spacing:2.7px;font-weight:800;margin-top:2px}.navlinks{display:flex;gap:24px;margin-left:auto}.navlinks a{color:#dbe6f2;font-size:13px;font-weight:700}.navlinks a:hover{color:#f1d17f}.nav-actions{display:flex;gap:8px}
+.hero{min-height:calc(100vh - 76px);background:radial-gradient(circle at 76% 42%,#1b5b98 0,#103f73 31%,#082b55 68%);color:#fff;position:relative;overflow:hidden}.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(232,197,110,.2);border-radius:50%;pointer-events:none}.hero:before{width:650px;height:650px;right:-180px;top:-150px}.hero:after{width:950px;height:950px;right:-330px;top:-300px}.hero-inner{max-width:1320px;margin:auto;min-height:calc(100vh - 76px);padding:70px 5%;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px;position:relative;z-index:1}.eyebrow,.kicker{display:inline-flex;gap:8px;align-items:center;color:var(--gold2);font-weight:800;font-size:12px;letter-spacing:.6px;text-transform:uppercase}.hero h1{font-family:"Playfair Display",serif;font-size:clamp(42px,5.4vw,72px);line-height:1.05;margin:17px 0}.hero h1 span{color:#e4bb58}.hero p{max-width:650px;color:#d8e6f3;line-height:1.8;font-size:16px}.hero-buttons{display:flex;gap:12px;margin:28px 0}.hero-points{display:grid;grid-template-columns:1fr 1fr;gap:13px;color:#dce9f5;font-size:13px}.hero-point{display:flex;gap:9px;align-items:center}.hero-point i{color:#e6bd60}
+.hero-visual{height:570px;display:grid;place-items:center;position:relative}.logo-orbit{width:430px;height:430px;border-radius:50%;border:1px solid rgba(232,197,110,.35);box-shadow:0 0 0 16px rgba(255,255,255,.025),0 0 0 32px rgba(255,255,255,.018);animation:orbitGlow 4s ease-in-out infinite}.logo-orbit:before{content:"";position:absolute;inset:60px;border:1px dashed rgba(232,197,110,.28);border-radius:50%;animation:spin 28s linear infinite}.logo-card{width:360px;height:360px;border-radius:50%;background:#fff;padding:16px;box-shadow:0 28px 80px rgba(0,0,0,.3);animation:floatLogo 5s ease-in-out infinite;position:absolute;display:grid;place-items:center}.logo-card img{width:100%;height:100%;object-fit:contain;border-radius:50%}.floating-card{position:absolute;background:rgba(255,255,255,.97);color:#12304e;padding:13px 17px;border-radius:15px;box-shadow:0 18px 45px rgba(0,0,0,.22);font-size:13px;font-weight:800;display:flex;align-items:center;gap:9px;z-index:2}.floating-card i{color:var(--gold)}.fc1{left:1%;top:18%;animation:floatA 4.5s ease-in-out infinite}.fc2{right:1%;bottom:18%;animation:floatB 5s ease-in-out infinite}
+@keyframes floatLogo{50%{transform:translateY(-10px)}}@keyframes floatA{50%{transform:translate(8px,-15px) rotate(1deg)}}@keyframes floatB{50%{transform:translate(-8px,13px) rotate(-1deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes orbitGlow{50%{box-shadow:0 0 0 16px rgba(255,255,255,.025),0 0 0 32px rgba(255,255,255,.018),0 0 55px rgba(232,197,110,.08)}}
+.section{padding:90px 5%;background:#fff}.section.alt{background:var(--bg)}.section-inner{max-width:1220px;margin:auto}.section-head{text-align:center;max-width:720px;margin:0 auto 42px}.section-head h2{font-family:"Playfair Display",serif;font-size:42px;margin:12px 0;color:var(--navy)}.section-head p{color:var(--muted);line-height:1.75}.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.program-card,.feature-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:25px;box-shadow:0 8px 25px rgba(8,43,85,.05);transition:.2s}.program-card:hover,.feature-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.program-icon{width:50px;height:50px;border-radius:13px;background:#edf6fd;color:var(--blue);display:grid;place-items:center;font-size:21px;margin-bottom:18px}.program-card h3{color:var(--navy);margin-bottom:9px}.program-card p,.feature-card p{color:var(--muted);font-size:13px;line-height:1.7}.tag{display:inline-block;margin-top:15px;background:#fff5dc;color:#946d19;border-radius:30px;padding:5px 10px;font-size:11px;font-weight:800}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}.about-copy h2{font-family:"Playfair Display",serif;font-size:42px;color:var(--navy);margin:12px 0 17px}.about-copy>p{color:var(--muted);line-height:1.8}.about-list{margin-top:22px;display:grid;gap:13px}.about-list div{display:flex;gap:11px;line-height:1.55;font-size:14px}.about-list i{color:var(--green);margin-top:3px}.glance{background:linear-gradient(145deg,var(--navy),#15538d);border-radius:24px;padding:30px;color:#fff;box-shadow:var(--shadow)}.glance h3{margin-bottom:22px}.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:20px}.stat strong{font-size:27px;color:#f0ca70;display:block}.stat span{font-size:11px;color:#dbe8f4}
+.cta{padding:85px 5%;text-align:center;background:linear-gradient(135deg,#082b55,#15568e);color:#fff}.cta h2{font-family:"Playfair Display",serif;font-size:40px}.cta p{max-width:650px;margin:13px auto 25px;color:#d6e5f2;line-height:1.7}.footer{background:#061e3b;color:#b9cadc;padding:50px 5% 20px}.footer-grid{max-width:1220px;margin:auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:35px}.footer h4{color:#fff;margin-bottom:15px}.footer ul{list-style:none;display:grid;gap:10px;font-size:13px}.footer p{font-size:13px;line-height:1.7}.footer-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;margin-bottom:12px}.footer-brand img{width:50px;height:50px;object-fit:contain}.footer-bottom{max-width:1220px;margin:35px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:11px}
+.login-shell{min-height:100vh;background:radial-gradient(circle at 20% 20%,#15558c,#082b55 55%,#041d36);display:grid;place-items:center;padding:25px;position:relative}.login-shell:before{content:"";position:absolute;width:650px;height:650px;border:1px solid rgba(232,197,110,.17);border-radius:50%;right:-180px;top:-220px}.login-panel{width:min(1050px,100%);background:#fff;border-radius:26px;box-shadow:0 30px 90px rgba(0,0,0,.28);overflow:hidden;display:grid;grid-template-columns:.85fr 1.15fr;position:relative;z-index:1}.login-brand-side{background:linear-gradient(160deg,#082b55,#15568e);color:#fff;padding:42px;display:flex;flex-direction:column;justify-content:center}.login-brand-side img{width:130px;height:130px;object-fit:contain;background:#fff;border-radius:50%;padding:5px;margin-bottom:25px}.login-brand-side h1{font-family:"Playfair Display",serif;font-size:39px}.login-brand-side p{color:#d4e4f2;line-height:1.7;margin-top:12px}.login-side{padding:42px}.login-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.login-top h2{color:var(--navy);font-size:26px}.back-link{color:var(--blue);font-weight:800;border:0;background:none}.portal-choice{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}.portal-card{border:1px solid var(--line);background:#f9fbfd;border-radius:15px;padding:16px;text-align:left;transition:.2s}.portal-card.active{border:2px solid var(--gold);background:#fffaf0}.portal-card i{font-size:21px;color:var(--gold);margin-bottom:9px}.portal-card strong{display:block;color:var(--navy)}.portal-card span{font-size:11px;color:var(--muted)}.form-group{margin-bottom:16px}.form-group label{display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:#38516c;margin-bottom:7px}.input-wrap{position:relative}.input-wrap input,.form-control{width:100%;border:1px solid #ced9e5;border-radius:11px;padding:13px 14px;outline:none;background:#fff}.input-wrap input:focus,.form-control:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(23,109,181,.1)}.input-wrap input{padding-right:43px}.toggle-pass{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted)}.form-row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:6px 0 19px;font-size:12px}.check{display:flex;align-items:center;gap:7px;color:var(--muted)}.demo-box{margin-top:18px;padding:12px 14px;background:#f1f6fb;border-radius:11px;color:#52687d;font-size:11px;line-height:1.6}.login-error{min-height:20px;color:var(--red);font-size:12px;font-weight:700;margin-bottom:7px}.role-note{font-size:11px;color:var(--muted);margin-top:8px}
+.portal{min-height:100vh;display:grid;grid-template-columns:250px 1fr;background:var(--bg)}.sidebar{background:var(--sidebar);color:#fff;position:fixed;left:0;top:0;bottom:0;width:250px;padding:20px 13px;z-index:1200;display:flex;flex-direction:column}.side-brand{display:flex;align-items:center;gap:10px;padding:3px 9px 20px;border-bottom:1px solid rgba(255,255,255,.1)}.side-brand img{width:48px;height:48px;object-fit:contain}.side-brand strong{font-size:15px}.side-brand small{display:block;color:#dcb45d;font-size:8px;letter-spacing:2px}.side-nav{margin-top:18px;display:grid;gap:5px;overflow:auto}.side-nav button{border:0;background:transparent;color:#bdcee0;text-align:left;padding:12px 12px;border-radius:10px;display:flex;gap:11px;align-items:center;font-size:12px;font-weight:700}.side-nav button:hover,.side-nav button.active{background:#124a7e;color:#fff}.side-nav button i{width:18px;text-align:center}.side-bottom{margin-top:auto}.user-mini{padding:12px;border-top:1px solid rgba(255,255,255,.1);font-size:11px}.user-mini strong{display:block;color:#fff}.user-mini span{color:#a9bed2}.portal-main{grid-column:2;min-width:0}.portal-head{height:78px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:900}.page-title h1{font-size:22px;color:var(--navy)}.page-title p{font-size:11px;color:var(--muted);margin-top:3px}.head-actions{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;background:#eaf3fb;color:var(--navy);display:grid;place-items:center;font-weight:800}.content{padding:28px;max-width:1450px;margin:auto}.section-page{display:none}.section-page.active{display:block}.dashboard-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.d-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 8px 25px rgba(8,43,85,.04)}.d-card .d-top{display:flex;justify-content:space-between;color:var(--blue);font-size:18px}.d-card h3{font-size:12px;color:var(--muted);margin:15px 0 5px}.d-card strong{font-size:27px;color:var(--navy)}.d-card small{display:block;color:#8998a8;margin-top:4px;font-size:10px}.grid2{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;margin-top:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 8px 25px rgba(8,43,85,.04)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.panel-head h3{font-size:15px;color:var(--navy)}.muted{color:var(--muted);font-size:12px}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:15px}.toolbar-left{display:flex;gap:8px;flex:1}.search{width:min(360px,100%);border:1px solid var(--line);padding:11px 13px;border-radius:10px;outline:none;background:#fff}.search:focus{border-color:var(--blue)}.table-wrap{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:auto}.table{width:100%;border-collapse:collapse;min-width:720px}.table th,.table td{padding:13px 14px;text-align:left;border-bottom:1px solid #edf1f5;font-size:12px;white-space:nowrap}.table th{background:#f7f9fc;color:#63758a;font-size:10px;text-transform:uppercase;letter-spacing:.5px}.table tr:last-child td{border-bottom:0}.badge{display:inline-flex;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:800}.b-green{background:#e5f6ee;color:#12704d}.b-gold{background:#fff4d9;color:#946b18}.b-red{background:#fde9eb;color:#a12b36}.actions{display:flex;gap:6px}.act{border:1px solid var(--line);background:#fff;border-radius:8px;width:31px;height:31px;color:var(--navy)}.act.del{color:var(--red)}.empty{padding:35px;text-align:center;color:var(--muted);font-size:12px}.list{display:grid;gap:10px}.list-item{padding:13px;border:1px solid var(--line);border-radius:12px}.list-item strong{display:block;color:var(--navy);font-size:12px}.list-item span{font-size:11px;color:var(--muted);line-height:1.6}.progress{height:8px;background:#eaf0f5;border-radius:10px;overflow:hidden;margin-top:8px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--blue2));border-radius:10px}.student-welcome{background:linear-gradient(135deg,#0a315d,#17629a);color:#fff;border-radius:18px;padding:24px;margin-bottom:18px;display:flex;justify-content:space-between;gap:20px;align-items:center}.student-welcome h2{font-family:"Playfair Display",serif;font-size:28px}.student-welcome p{color:#d8e8f4;font-size:12px;margin-top:5px}.welcome-chip{background:rgba(255,255,255,.1);padding:12px 14px;border-radius:12px;font-size:11px}.course-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.course-mini{border:1px solid var(--line);border-radius:14px;padding:17px;background:#fff}.course-mini h4{color:var(--navy);font-size:13px}.course-mini p{color:var(--muted);font-size:11px;margin:5px 0}.chart{display:flex;align-items:flex-end;gap:10px;height:170px;padding-top:10px}.bar{flex:1;background:linear-gradient(180deg,#0e8bc9,#176db5);border-radius:8px 8px 3px 3px;min-width:22px;position:relative}.bar span{position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted)}.modal{position:fixed;inset:0;background:rgba(4,25,48,.58);backdrop-filter:blur(5px);display:grid;place-items:center;padding:20px;z-index:3000}.modal-card{width:min(680px,100%);background:#fff;border-radius:20px;padding:24px;max-height:90vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-head h3{color:var(--navy)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.form-grid .full{grid-column:1/-1}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.mobile-menu{display:none}
+.student-only .manager-only{display:none!important}.manager-only .student-only{display:none!important}
+@media(max-width:1000px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.hero-buttons,.hero-points{justify-content:center}.hero-visual{height:480px}.program-grid{grid-template-columns:1fr 1fr}.about-grid,.grid2{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}.dashboard-cards{grid-template-columns:1fr 1fr}.course-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.nav{padding:9px 4%}.nav-actions .btn:first-child{display:none}.hero-inner{padding:55px 5%}.hero h1{font-size:42px}.hero-points{grid-template-columns:1fr;text-align:left;max-width:360px;margin:auto}.hero-visual{height:400px}.logo-orbit{width:300px;height:300px}.logo-card{width:255px;height:255px}.fc1{left:0;top:8%}.fc2{right:0;bottom:8%}.floating-card{font-size:10px;padding:10px 12px}.section{padding:65px 5%}.section-head h2,.about-copy h2,.cta h2{font-size:32px}.program-grid,.footer-grid{grid-template-columns:1fr}.login-panel{grid-template-columns:1fr}.login-brand-side{display:none}.login-side{padding:28px 22px}.portal{display:block}.sidebar{transform:translateX(-100%);transition:.25s;width:255px}.sidebar.open{transform:none}.portal-main{margin-left:0}.portal-head{padding:0 15px}.mobile-menu{display:grid}.content{padding:17px}.dashboard-cards{grid-template-columns:1fr 1fr}.course-cards{grid-template-columns:1fr}.toolbar{align-items:stretch;flex-direction:column}.toolbar-left{width:100%}.search{width:100%}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.student-welcome{align-items:flex-start;flex-direction:column}.toast{left:15px;right:15px;min-width:0}.portal-head .head-actions .user-name{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-<div id="landing" class="landing">
-  <header class="topbar">
-    <nav class="nav">
-      <a class="brand" href="#home">
-        <img src="mizuho-logo.png" alt="MIZUHO Institute logo">
-        <div class="brand-text"><strong>MIZUHO Institute</strong><span>ADVANCING KNOWLEDGE</span></div>
-      </a>
-      <div class="navlinks">
-        <a href="#home">Home</a><a href="#programs">Programs</a><a href="#about">About</a><a href="#contact">Contact</a>
-      </div>
-      <div class="nav-actions">
-        <button class="btn outline" onclick="openLogin()">Student Portal</button>
-        <button class="btn gold" onclick="openLogin()">Institute Portal <i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </nav>
-  </header>
+<div id="toast" class="toast"><i class="fa-solid fa-circle-info"></i><span></span></div>
 
-  <section class="hero" id="home">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> Modern Education • Sri Lanka</span>
-        <h1>Advancing <span>Knowledge</span>,<br>Shaping the Future.</h1>
-        <p>MIZUHO Institute is a modern education platform designed around academic excellence, practical learning, professional development and a connected student experience.</p>
-        <div class="hero-buttons">
-          <button class="btn gold" onclick="scrollToId('programs')">Explore Programs <i class="fa-solid fa-arrow-down"></i></button>
-          <button class="btn outline" onclick="openLogin()">Access Portal</button>
-        </div>
-        <div class="hero-points">
-          <div class="hero-point"><i class="fa-solid fa-check"></i> Industry-oriented curriculum</div>
-          <div class="hero-point"><i class="fa-solid fa-check"></i> Experienced academic staff</div>
-          <div class="hero-point"><i class="fa-solid fa-check"></i> Practical & project-based learning</div>
-          <div class="hero-point"><i class="fa-solid fa-check"></i> Digital student management</div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="floating-card fc1"><i class="fa-solid fa-award"></i> Excellence in Education</div>
-        <div class="logo-card"><img src="mizuho-logo.png" alt="MIZUHO Institute"></div>
-        <div class="floating-card fc2"><i class="fa-solid fa-earth-asia"></i> Shaping Global Learners</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="programs">
-    <div class="section-inner">
-      <div class="section-head">
-        <span class="kicker">Academic Pathways</span>
-        <h2>Programs Built for the Future</h2>
-        <p>Flexible learning pathways that combine academic foundations, practical skills and career-focused development.</p>
-      </div>
-      <div class="program-grid">
-        <article class="program-card"><div class="program-icon"><i class="fa-solid fa-laptop-code"></i></div><h3>Information Technology</h3><p>Programming, databases, software engineering, web technologies, networking and modern computing practices.</p><span class="tag">Technology</span></article>
-        <article class="program-card"><div class="program-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Business & Management</h3><p>Develop analytical, leadership, communication and entrepreneurship capabilities for the modern workplace.</p><span class="tag">Management</span></article>
-        <article class="program-card"><div class="program-icon"><i class="fa-solid fa-microchip"></i></div><h3>Computing & Engineering</h3><p>Explore systems, computer architecture, electronics, data and applied engineering concepts through projects.</p><span class="tag">Engineering</span></article>
-        <article class="program-card"><div class="program-icon"><i class="fa-solid fa-language"></i></div><h3>Languages & Communication</h3><p>Build professional language, presentation, academic writing and interpersonal communication skills.</p><span class="tag">Professional Skills</span></article>
-        <article class="program-card"><div class="program-icon"><i class="fa-solid fa-database"></i></div><h3>Data & Analytics</h3><p>Learn data handling, visualization, statistics, Python-based analysis and decision-support techniques.</p><span class="tag">Data</span></article>
-        <article class="program-card"><div class="program-icon"><i class="fa-solid fa-certificate"></i></div><h3>Professional Certificates</h3><p>Short, focused programs designed to help learners upgrade practical skills and strengthen employability.</p><span class="tag">Career Development</span></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section about" id="about">
-    <div class="section-inner about-grid">
-      <div class="about-copy">
-        <span class="kicker">Our Philosophy</span>
-        <h2>Education that connects knowledge with opportunity.</h2>
-        <p>Our digital architecture follows the same principle as the institute identity: a strong academic foundation, global perspective, continuous learning and a clear pathway toward the future.</p>
-        <div class="about-list">
-          <div><i class="fa-solid fa-circle-check"></i><span><b>Student-centered learning</b> with clear academic progress tracking.</span></div>
-          <div><i class="fa-solid fa-circle-check"></i><span><b>Practical education</b> through assignments, laboratories and projects.</span></div>
-          <div><i class="fa-solid fa-circle-check"></i><span><b>Connected administration</b> for students, lecturers and institute staff.</span></div>
-          <div><i class="fa-solid fa-circle-check"></i><span><b>Continuous improvement</b> supported by academic analytics and feedback.</span></div>
-        </div>
-      </div>
-      <div class="about-panel">
-        <h3>MIZUHO at a Glance</h3>
-        <div class="stat-grid">
-          <div class="stat"><strong>2,500+</strong><span>Active Learners</span></div>
-          <div class="stat"><strong>80+</strong><span>Academic Staff</span></div>
-          <div class="stat"><strong>25+</strong><span>Programs & Modules</span></div>
-          <div class="stat"><strong>12+</strong><span>Learning Areas</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="contact">
-    <h2>Begin Your Next Academic Chapter</h2>
-    <p>Connect with MIZUHO Institute and explore a learning environment built to develop knowledge, confidence and practical capability.</p>
-    <button class="btn gold" onclick="openLogin()">Enter Education Portal <i class="fa-solid fa-arrow-right"></i></button>
-  </section>
-
-  <footer class="footer">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand"><img src="mizuho-logo.png" alt=""><strong>MIZUHO Institute</strong></div>
-        <p>Advancing Knowledge • Shaping the Future. A modern education institute experience with a connected academic management portal.</p>
-      </div>
-      <div><h4>Institute</h4><ul><li><a href="#about">About Us</a></li><li><a href="#programs">Programs</a></li><li><a href="#contact">Admissions</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div><h4>Portal</h4><ul><li><a href="#" onclick="openLogin()">Student Portal</a></li><li><a href="#" onclick="openLogin()">Lecturer Portal</a></li><li><a href="#" onclick="openLogin()">Administration</a></li><li><a href="#" onclick="openLogin()">Academic Records</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li>Colombo / Kandy • Sri Lanka</li><li>info@mizuho.edu.lk</li><li>+94 11 000 0000</li><li>Mon – Fri • 8:00 AM – 5:00 PM</li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> MIZUHO Institute. All rights reserved.</span><span>Advancing Knowledge • Shaping the Future</span></div>
-  </footer>
+<!-- PUBLIC WEBSITE -->
+<div id="landing">
+<header class="topbar"><nav class="nav">
+<a class="brand" href="#home"><img src="mizuho-logo.png" alt="MIZUHO Institute logo"><div><strong>MIZUHO Institute</strong><small>ADVANCING KNOWLEDGE</small></div></a>
+<div class="navlinks"><a href="#home">Home</a><a href="#programs">Programs</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+<div class="nav-actions"><button class="btn outline" onclick="openLogin('student')">Student Portal</button><button class="btn gold" onclick="openLogin('manager')">Institute Manager <i class="fa-solid fa-arrow-right"></i></button></div>
+</nav></header>
+<section class="hero" id="home"><div class="hero-inner">
+<div class="hero-copy"><span class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> Modern Education • Sri Lanka</span>
+<h1>Advancing <span>Knowledge</span>,<br>Shaping the Future.</h1>
+<p>MIZUHO Institute provides a connected academic environment for learning, professional development, student services and institutional management.</p>
+<div class="hero-buttons"><button class="btn gold" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">Explore Programs <i class="fa-solid fa-arrow-down"></i></button><button class="btn outline" onclick="openLogin()">Access Portal</button></div>
+<div class="hero-points"><div class="hero-point"><i class="fa-solid fa-check"></i> Industry-oriented curriculum</div><div class="hero-point"><i class="fa-solid fa-check"></i> Experienced academic staff</div><div class="hero-point"><i class="fa-solid fa-check"></i> Practical & project-based learning</div><div class="hero-point"><i class="fa-solid fa-check"></i> Digital student management</div></div>
+</div>
+<div class="hero-visual"><div class="logo-orbit"></div><div class="logo-card"><img src="mizuho-logo.png" alt="MIZUHO Institute"></div><div class="floating-card fc1"><i class="fa-solid fa-award"></i> Excellence in Education</div><div class="floating-card fc2"><i class="fa-solid fa-earth-asia"></i> Shaping Global Learners</div></div>
+</div></section>
+<section class="section" id="programs"><div class="section-inner"><div class="section-head"><span class="kicker">Academic Pathways</span><h2>Programs Built for the Future</h2><p>Flexible pathways combining academic foundations, practical skills and career-focused development.</p></div>
+<div class="program-grid">
+<article class="program-card"><div class="program-icon"><i class="fa-solid fa-laptop-code"></i></div><h3>Information Technology</h3><p>Programming, databases, software engineering, web technologies, networking and modern computing.</p><span class="tag">Technology</span></article>
+<article class="program-card"><div class="program-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Business & Management</h3><p>Analytical, leadership, communication and entrepreneurship capabilities for the modern workplace.</p><span class="tag">Management</span></article>
+<article class="program-card"><div class="program-icon"><i class="fa-solid fa-microchip"></i></div><h3>Computing & Engineering</h3><p>Systems, computer architecture, electronics, data and applied engineering concepts through projects.</p><span class="tag">Engineering</span></article>
+<article class="program-card"><div class="program-icon"><i class="fa-solid fa-language"></i></div><h3>Languages & Communication</h3><p>Professional language, presentation, academic writing and interpersonal communication skills.</p><span class="tag">Professional Skills</span></article>
+<article class="program-card"><div class="program-icon"><i class="fa-solid fa-database"></i></div><h3>Data & Analytics</h3><p>Data handling, visualization, statistics, Python-based analysis and decision-support techniques.</p><span class="tag">Data</span></article>
+<article class="program-card"><div class="program-icon"><i class="fa-solid fa-certificate"></i></div><h3>Professional Certificates</h3><p>Short programs designed to upgrade practical skills and strengthen employability.</p><span class="tag">Career Development</span></article>
+</div></div></section>
+<section class="section alt" id="about"><div class="section-inner about-grid"><div class="about-copy"><span class="kicker">Our Philosophy</span><h2>Education that connects knowledge with opportunity.</h2><p>MIZUHO's digital architecture follows the institute identity: a strong academic foundation, global perspective, continuous learning and a clear pathway toward the future.</p><div class="about-list"><div><i class="fa-solid fa-circle-check"></i><span><b>Student-centered learning</b> with clear academic progress tracking.</span></div><div><i class="fa-solid fa-circle-check"></i><span><b>Practical education</b> through assignments, laboratories and projects.</span></div><div><i class="fa-solid fa-circle-check"></i><span><b>Connected administration</b> for students, lecturers and institute staff.</span></div><div><i class="fa-solid fa-circle-check"></i><span><b>Continuous improvement</b> supported by academic analytics and feedback.</span></div></div></div><div class="glance"><h3>MIZUHO at a Glance</h3><div class="stat-grid"><div class="stat"><strong>2,500+</strong><span>Active Learners</span></div><div class="stat"><strong>80+</strong><span>Academic Staff</span></div><div class="stat"><strong>25+</strong><span>Programs & Modules</span></div><div class="stat"><strong>12+</strong><span>Learning Areas</span></div></div></div></div></section>
+<section class="cta" id="contact"><h2>Begin Your Next Academic Chapter</h2><p>Connect with MIZUHO Institute through the student or institute manager portal.</p><button class="btn gold" onclick="openLogin()">Enter Education Portal <i class="fa-solid fa-arrow-right"></i></button></section>
+<footer class="footer"><div class="footer-grid"><div><div class="footer-brand"><img src="mizuho-logo.png" alt=""><strong>MIZUHO Institute</strong></div><p>Advancing Knowledge • Shaping the Future. A modern education institute experience with connected academic services.</p></div><div><h4>Institute</h4><ul><li><a href="#about">About Us</a></li><li><a href="#programs">Programs</a></li><li><a href="#contact">Admissions</a></li></ul></div><div><h4>Portal</h4><ul><li><a href="#" onclick="openLogin('student');return false">Student Portal</a></li><li><a href="#" onclick="openLogin('manager');return false">Institute Manager</a></li></ul></div><div><h4>Contact</h4><ul><li>Colombo / Kandy • Sri Lanka</li><li>info@mizuho.edu.lk</li><li>+94 11 000 0000</li><li>Mon – Fri • 8:00 AM – 5:00 PM</li></ul></div></div><div class="footer-bottom"><span>© <span id="year"></span> MIZUHO Institute. All rights reserved.</span><span>Advancing Knowledge • Shaping the Future</span></div></footer>
 </div>
 
-<!-- Login -->
-<div id="loginPage" class="login-page hidden">
-  <div class="login-box">
-    <div class="login-brand">
-      <img src="mizuho-logo.png" alt="MIZUHO Institute">
-      <h1>Education Portal</h1>
-      <p>Secure access to academic management, student records, courses, classes, payments, announcements and institutional analytics.</p>
-      <div class="mini">
-        <div><i class="fa-solid fa-check"></i> Student & lecturer management</div>
-        <div><i class="fa-solid fa-check"></i> Course and class scheduling</div>
-        <div><i class="fa-solid fa-check"></i> Academic performance overview</div>
-        <div><i class="fa-solid fa-check"></i> Persistent browser storage</div>
-      </div>
+<!-- LOGIN -->
+<section id="loginScreen" class="login-screen">
+  <div class="login-wrap">
+    <div class="hero">
+      <div class="floating f1">🏅 Excellence in Education</div>
+      <div class="floating f2">🌍 Shaping Global Learners</div>
+      <img id="heroLogo" class="hero-logo" alt="MIZUHO Institute">
+      <h1>One Institute. Two Portals.</h1>
+      <p>Access your MIZUHO academic experience through one secure, modern portal for students and institution managers.</p>
     </div>
-    <div class="login-form">
-      <h2>Sign in to MIZUHO</h2>
-      <p>Use the demo administrator account to explore the portal.</p>
-      <div class="field"><label>Username</label><input id="loginUser" class="input" value="admin" placeholder="Username"></div>
-      <div class="field"><label>Password</label><input id="loginPass" class="input" type="password" value="admin123" placeholder="Password"></div>
-      <div class="field"><label>Role</label>
-        <select id="loginRole" class="input"><option value="admin">Administrator</option><option value="lecturer">Lecturer</option><option value="student">Student</option></select>
-      </div>
-      <button class="btn" onclick="login()"><i class="fa-solid fa-right-to-bracket"></i> Sign In Securely</button>
-      <div class="demo"><b>Demo:</b> username <b>admin</b> / password <b>admin123</b></div>
-      <a href="#" class="back" onclick="showLanding()">← Return to institute website</a>
-    </div>
-  </div>
-</div>
+    <div class="login-card">
+      <div class="eyebrow">Unified Portal</div>
+      <h2 id="loginTitle">Student Portal</h2>
+      <p class="sub" id="loginSub">Sign in to access your courses, timetable, results and payments.</p>
 
-<!-- Dashboard -->
-<div id="dashboard" class="dashboard">
-  <div class="dashboard-shell">
-    <aside class="sidebar" id="sidebar">
-      <div class="side-brand"><img src="mizuho-logo.png" alt=""><div><strong>MIZUHO</strong><span>INSTITUTE</span></div></div>
-      <button class="side-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
-      <nav class="side-nav">
-        <a class="active" data-section="overview" onclick="showSection('overview',this)"><i class="fa-solid fa-chart-pie"></i><span class="nav-label">Overview</span></a>
-        <a data-section="students" onclick="showSection('students',this)"><i class="fa-solid fa-user-graduate"></i><span class="nav-label">Students</span></a>
-        <a data-section="lecturers" onclick="showSection('lecturers',this)"><i class="fa-solid fa-chalkboard-user"></i><span class="nav-label">Lecturers</span></a>
-        <a data-section="courses" onclick="showSection('courses',this)"><i class="fa-solid fa-book-open"></i><span class="nav-label">Courses</span></a>
-        <a data-section="classes" onclick="showSection('classes',this)"><i class="fa-solid fa-calendar-days"></i><span class="nav-label">Classes</span></a>
-        <a data-section="payments" onclick="showSection('payments',this)"><i class="fa-solid fa-file-invoice-dollar"></i><span class="nav-label">Payments</span></a>
-        <a data-section="announcements" onclick="showSection('announcements',this)"><i class="fa-solid fa-bullhorn"></i><span class="nav-label">Announcements</span></a>
-        <a data-section="analytics" onclick="showSection('analytics',this)"><i class="fa-solid fa-chart-column"></i><span class="nav-label">Analytics</span></a>
-      </nav>
-      <div class="side-bottom">
-        <div class="user-chip"><div class="user-avatar">AD</div><div class="user-meta"><strong>Administrator</strong><span>Portal Access</span></div></div>
-        <a class="side-nav" href="#" onclick="logout();return false;" style="display:flex;padding:10px 12px;color:#ffb4b4;font-size:12px"><i class="fa-solid fa-right-from-bracket"></i><span class="nav-label">Logout</span></a>
-      </div>
-    </aside>
-
-    <main class="main">
-      <div class="top-head">
-        <div><button class="icon-btn mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('mobile-open')"><i class="fa-solid fa-bars"></i></button><h1 id="pageTitle" style="display:inline;margin-left:8px">Academic Overview</h1><p id="pageSubtitle">MIZUHO Institute management dashboard</p></div>
-        <div class="head-actions"><button class="icon-btn" title="Notifications" onclick="showToast('You have 3 academic notifications.')"><i class="fa-regular fa-bell"></i></button><button class="btn gold" onclick="openCreate('students')"><i class="fa-solid fa-plus"></i> Add Student</button></div>
+      <div class="roles">
+        <button class="role active" id="studentRole" onclick="selectRole('student')">
+          🎓 <strong>Student Portal</strong><small>Academic & personal services</small>
+        </button>
+        <button class="role" id="managerRole" onclick="selectRole('manager')">
+          🏢 <strong>Institution Manager</strong><small>Administration & analytics</small>
+        </button>
       </div>
 
-      <section id="overview" class="content-section active">
-        <div class="dashboard-cards">
-          <div class="d-card"><div class="d-top"><i class="fa-solid fa-user-graduate"></i><span>+8%</span></div><h3>Students</h3><strong id="countStudents">0</strong><small>Active learner records</small></div>
-          <div class="d-card"><div class="d-top"><i class="fa-solid fa-chalkboard-user"></i><span>+4%</span></div><h3>Lecturers</h3><strong id="countLecturers">0</strong><small>Academic staff</small></div>
-          <div class="d-card"><div class="d-top"><i class="fa-solid fa-book-open"></i><span>+6%</span></div><h3>Courses</h3><strong id="countCourses">0</strong><small>Available programs</small></div>
-          <div class="d-card"><div class="d-top"><i class="fa-solid fa-wallet"></i><span>+11%</span></div><h3>Revenue</h3><strong id="totalRevenue">LKR 0</strong><small>Recorded payments</small></div>
+      <form id="loginForm" onsubmit="login(event)">
+        <div class="field"><label>Email / Username</label><input id="loginUser" autocomplete="username" required placeholder="Enter your username"></div>
+        <div class="field"><label>Password</label><div class="password"><input id="loginPass" type="password" autocomplete="current-password" required placeholder="Enter your password"><button type="button" onclick="togglePassword()">Show</button></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <label><input type="checkbox" id="remember"> Remember me</label>
+          <button type="button" class="link" onclick="forgotPassword()">Forgot password?</button>
         </div>
-        <div class="grid2">
-          <div class="panel"><div class="panel-head"><h3>Monthly Enrollment</h3><span>Current academic year</span></div><div class="panel-body"><div class="bar-chart" id="enrollmentChart"></div></div></div>
-          <div class="panel"><div class="panel-head"><h3>Quick Actions</h3><span>Management tools</span></div><div class="panel-body"><div class="quick-grid">
-            <button class="quick" onclick="openCreate('students')"><i class="fa-solid fa-user-plus"></i><strong>Register Student</strong><span>Create learner profile</span></button>
-            <button class="quick" onclick="openCreate('lecturers')"><i class="fa-solid fa-person-chalkboard"></i><strong>Add Lecturer</strong><span>Create staff record</span></button>
-            <button class="quick" onclick="openCreate('courses')"><i class="fa-solid fa-book"></i><strong>Create Course</strong><span>Add academic offering</span></button>
-            <button class="quick" onclick="openCreate('announcements')"><i class="fa-solid fa-bullhorn"></i><strong>Announcement</strong><span>Publish notice</span></button>
-          </div></div></div>
-        </div>
-        <div class="panel"><div class="panel-head"><h3>Recent Announcements</h3><span>Latest institute notices</span></div><div class="panel-body" id="recentNotices"></div></div>
-      </section>
+        <div class="login-actions"><button class="btn btn-primary" type="submit">Sign In</button>
+		</section>
 
-      <section id="students" class="content-section">
-        <div class="toolbar"><div class="toolbar-left"><input id="studentSearch" class="search" placeholder="Search students..." oninput="renderStudents()"></div><button class="btn" onclick="openCreate('students')"><i class="fa-solid fa-plus"></i> Add Student</button></div>
-        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Student</th><th>Email</th><th>Program</th><th>Status</th><th>Actions</th></tr></thead><tbody id="studentTable"></tbody></table></div>
-      </section>
-
-      <section id="lecturers" class="content-section">
-        <div class="toolbar"><div class="toolbar-left"><input id="lecturerSearch" class="search" placeholder="Search lecturers..." oninput="renderLecturers()"></div><button class="btn" onclick="openCreate('lecturers')"><i class="fa-solid fa-plus"></i> Add Lecturer</button></div>
-        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Lecturer</th><th>Department</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead><tbody id="lecturerTable"></tbody></table></div>
-      </section>
-
-      <section id="courses" class="content-section">
-        <div class="toolbar"><div class="toolbar-left"><input id="courseSearch" class="search" placeholder="Search courses..." oninput="renderCourses()"></div><button class="btn" onclick="openCreate('courses')"><i class="fa-solid fa-plus"></i> Add Course</button></div>
-        <div class="table-wrap"><table><thead><tr><th>Code</th><th>Course</th><th>Department</th><th>Duration</th><th>Students</th><th>Actions</th></tr></thead><tbody id="courseTable"></tbody></table></div>
-      </section>
-
-      <section id="classes" class="content-section">
-        <div class="toolbar"><div class="toolbar-left"><input id="classSearch" class="search" placeholder="Search classes..." oninput="renderClasses()"></div><button class="btn" onclick="openCreate('classes')"><i class="fa-solid fa-plus"></i> Schedule Class</button></div>
-        <div class="table-wrap"><table><thead><tr><th>Class</th><th>Course</th><th>Lecturer</th><th>Date</th><th>Time</th><th>Room</th><th>Actions</th></tr></thead><tbody id="classTable"></tbody></table></div>
-      </section>
-
-      <section id="payments" class="content-section">
-        <div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-wallet"></i></div><h3>Total Collected</h3><strong id="paymentTotal">LKR 0</strong><small>All recorded transactions</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-receipt"></i></div><h3>Transactions</h3><strong id="paymentCount">0</strong><small>Payment records</small></div></div>
-        <div class="toolbar"><div class="toolbar-left"><input id="paymentSearch" class="search" placeholder="Search payments..." oninput="renderPayments()"></div><button class="btn" onclick="openCreate('payments')"><i class="fa-solid fa-plus"></i> Record Payment</button></div>
-        <div class="table-wrap"><table><thead><tr><th>Receipt</th><th>Student</th><th>Amount</th><th>Method</th><th>Date</th><th>Actions</th></tr></thead><tbody id="paymentTable"></tbody></table></div>
-      </section>
-
-      <section id="announcements" class="content-section">
-        <div class="toolbar"><div><b style="font-size:14px;color:var(--navy)">Institute Communications</b></div><button class="btn" onclick="openCreate('announcements')"><i class="fa-solid fa-plus"></i> New Announcement</button></div>
-        <div id="announcementList"></div>
-      </section>
-
-      <section id="analytics" class="content-section">
-        <div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-arrow-trend-up"></i></div><h3>Completion Rate</h3><strong>91.4%</strong><small>+3.2% this term</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-user-check"></i></div><h3>Attendance</h3><strong>88.7%</strong><small>Across active classes</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-graduation-cap"></i></div><h3>Pass Rate</h3><strong>94.2%</strong><small>Latest assessments</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-star"></i></div><h3>Satisfaction</h3><strong>4.7/5</strong><small>Student feedback</small></div></div>
-        <div class="grid2"><div class="panel"><div class="panel-head"><h3>Performance Trend</h3><span>Six-month overview</span></div><div class="panel-body"><div class="bar-chart" id="performanceChart"></div></div></div><div class="panel"><div class="panel-head"><h3>Academic Indicators</h3></div><div class="panel-body"><div class="notice"><i class="fa-solid fa-circle-check"></i><div><strong>Attendance is above target</strong><span>Current average exceeds the 85% benchmark.</span></div></div><div class="notice"><i class="fa-solid fa-circle-check"></i><div><strong>Course demand is increasing</strong><span>Technology programs show the strongest enrollment.</span></div></div><div class="notice"><i class="fa-solid fa-circle-info"></i><div><strong>Review pending assessments</strong><span>8 assessment records need lecturer review.</span></div></div></div></div></div>
-      </section>
-    </main>
-  </div>
+<!-- PORTAL -->
+<div id="portal" class="portal hidden">
+<aside id="sidebar" class="sidebar"><div class="side-brand"><img src="mizuho-logo.png" alt=""><div><strong>MIZUHO</strong><small id="sideRole">PORTAL</small></div></div><nav id="sideNav" class="side-nav"></nav><div class="side-bottom"><div class="user-mini"><strong id="sideUser">User</strong><span id="sideEmail">user@mizuho.edu.lk</span></div><button class="btn danger small" style="width:100%;margin-top:8px" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button></div></aside>
+<main class="portal-main"><header class="portal-head"><div style="display:flex;align-items:center;gap:12px"><button class="icon-btn mobile-menu" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button><div class="page-title"><h1 id="pageTitle">Dashboard</h1><p id="pageSubtitle"></p></div></div><div class="head-actions"><button class="icon-btn" title="Notifications" onclick="showSection('announcements')"><i class="fa-regular fa-bell"></i></button><span class="user-name" id="headName" style="font-size:12px;font-weight:800;color:var(--navy)"></span><div class="avatar" id="avatar">MI</div></div></header><div class="content" id="content"></div></main>
 </div>
 
-<!-- Modal -->
-<div class="modal-bg" id="modalBg">
-  <div class="modal">
-    <div class="modal-head"><h3 id="modalTitle">Create Record</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-foot"><button class="btn light" onclick="closeModal()">Cancel</button><button class="btn" onclick="submitModal()">Save Record</button></div>
-  </div>
-</div>
-<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span></span></div>
+<!-- MODAL -->
+<div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle">Form</h3><button class="icon-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><div id="modalBody"></div></div></div>
 
 <script>
-const KEY="mizuhoInstituteDB";
-let db={
-  students:[
-    {id:1001,name:"Ayesha Perera",email:"ayesha@example.com",program:"Information Technology",status:"Active"},
-    {id:1002,name:"Kasun Silva",email:"kasun@example.com",program:"Business & Management",status:"Active"},
-    {id:1003,name:"Nethmi Fernando",email:"nethmi@example.com",program:"Data & Analytics",status:"Active"}
-  ],
-  lecturers:[
-    {id:2001,name:"Dr. Amara Jayasinghe",department:"Computing",email:"amara@mizuho.edu.lk",status:"Active"},
-    {id:2002,name:"Prof. Dilan Perera",department:"Business",email:"dilan@mizuho.edu.lk",status:"Active"},
-    {id:2003,name:"Ms. Sachini Dias",department:"Languages",email:"sachini@mizuho.edu.lk",status:"Active"}
-  ],
-  courses:[
-    {id:"IT101",name:"Information Technology",department:"Computing",duration:"12 Months",students:120},
-    {id:"BM201",name:"Business & Management",department:"Business",duration:"12 Months",students:85},
-    {id:"DA301",name:"Data & Analytics",department:"Computing",duration:"9 Months",students:62}
-  ],
-  classes:[
-    {id:3001,name:"IT Morning A",course:"Information Technology",lecturer:"Dr. Amara Jayasinghe",date:"2026-08-26",time:"08:30 AM",room:"Lab 01"},
-    {id:3002,name:"BM Evening B",course:"Business & Management",lecturer:"Prof. Dilan Perera",date:"2026-08-27",time:"05:30 PM",room:"Room 204"}
-  ],
-  payments:[
-    {id:4001,student:"Ayesha Perera",amount:45000,method:"Bank Transfer",date:"2026-08-12"},
-    {id:4002,student:"Kasun Silva",amount:35000,method:"Card",date:"2026-08-14"},
-    {id:4003,student:"Nethmi Fernando",amount:50000,method:"Bank Transfer",date:"2026-08-18"}
-  ],
-  announcements:[
-    {id:5001,title:"Semester registration is now open",text:"Students can confirm their upcoming semester registration through the academic office.",date:"2026-08-22",type:"Academic"},
-    {id:5002,title:"New laboratory timetable",text:"The updated computing laboratory timetable has been published for all technology cohorts.",date:"2026-08-20",type:"Notice"},
-    {id:5003,title:"Career development workshop",text:"A professional skills workshop will be held this Friday for final-year learners.",date:"2026-08-18",type:"Event"}
-  ]
+const KEY='mizuho_institute_v4';
+const SESSION='mizuho_session_v4';
+const demoUsers={
+ student:{username:'student',password:'student123',name:'Ayesha Perera',email:'ayesha@mizuho.edu.lk',role:'student',id:1001},
+ manager:{username:'manager',password:'manager123',name:'Nadeesha Fernando',email:'manager@mizuho.edu.lk',role:'manager',id:9001},
+ admin:{username:'admin',password:'admin123',name:'MIZUHO Administrator',email:'admin@mizuho.edu.lk',role:'manager',id:9000}
 };
-let modalType="";
-
-function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
-function load(){try{const x=localStorage.getItem(KEY);if(x)db=JSON.parse(x)}catch(e){}}
-function money(n){return "LKR "+Number(n||0).toLocaleString("en-LK")}
+const seed={
+ students:[
+  {id:1001,name:'Ayesha Perera',email:'ayesha@mizuho.edu.lk',phone:'+94 77 123 4567',program:'Information Technology',year:'Year 1',status:'Active',gpa:3.62},
+  {id:1002,name:'Kasun Silva',email:'kasun@mizuho.edu.lk',phone:'+94 71 234 5678',program:'Business & Management',year:'Year 2',status:'Active',gpa:3.21},
+  {id:1003,name:'Nethmi Fernando',email:'nethmi@mizuho.edu.lk',phone:'+94 76 345 6789',program:'Data & Analytics',year:'Year 1',status:'Pending',gpa:3.78},
+  {id:1004,name:'Ravindu Jayasuriya',email:'ravindu@mizuho.edu.lk',phone:'+94 75 456 7890',program:'Computing & Engineering',year:'Year 3',status:'Active',gpa:3.44}
+ ],
+ lecturers:[
+  {id:2001,name:'Dr. Amara Jayasinghe',department:'Computing',email:'amara@mizuho.edu.lk',status:'Active'},
+  {id:2002,name:'Prof. Dilan Perera',department:'Business',email:'dilan@mizuho.edu.lk',status:'Active'},
+  {id:2003,name:'Ms. Sachini Dias',department:'Languages',email:'sachini@mizuho.edu.lk',status:'Active'}
+ ],
+ courses:[
+  {id:'IT101',name:'Information Technology',department:'Computing',duration:'12 Months',students:120},
+  {id:'BM201',name:'Business & Management',department:'Business',duration:'12 Months',students:85},
+  {id:'DA301',name:'Data & Analytics',department:'Computing',duration:'9 Months',students:62},
+  {id:'CE210',name:'Computing & Engineering',department:'Engineering',duration:'18 Months',students:74}
+ ],
+ classes:[
+  {id:3001,name:'IT Morning A',course:'Information Technology',lecturer:'Dr. Amara Jayasinghe',date:'2026-08-26',time:'08:30 AM',room:'Lab 01'},
+  {id:3002,name:'BM Evening B',course:'Business & Management',lecturer:'Prof. Dilan Perera',date:'2026-08-27',time:'05:30 PM',room:'Room 204'},
+  {id:3003,name:'DA Weekend A',course:'Data & Analytics',lecturer:'Dr. Amara Jayasinghe',date:'2026-08-29',time:'09:00 AM',room:'Lab 02'}
+ ],
+ payments:[
+  {id:4001,student:'Ayesha Perera',amount:45000,method:'Bank Transfer',date:'2026-08-12',status:'Paid'},
+  {id:4002,student:'Kasun Silva',amount:35000,method:'Card',date:'2026-08-14',status:'Paid'},
+  {id:4003,student:'Nethmi Fernando',amount:50000,method:'Bank Transfer',date:'2026-08-18',status:'Paid'}
+ ],
+ announcements:[
+  {id:5001,title:'Semester registration is now open',text:'Students can confirm upcoming semester registration through the academic office.',date:'2026-08-22',type:'Academic'},
+  {id:5002,title:'New laboratory timetable',text:'The updated computing laboratory timetable has been published for technology cohorts.',date:'2026-08-20',type:'Notice'},
+  {id:5003,title:'Career development workshop',text:'A professional skills workshop will be held this Friday for final-year learners.',date:'2026-08-18',type:'Event'}
+ ]
+};
+let db=loadDB(), currentUser=null, currentPortal='student', currentSection='overview', modalState=null;
+const titles={
+ overview:['Academic Overview','Your academic activity at a glance'],
+ profile:['My Profile','Personal and academic information'],
+ courses:['My Courses','Enrolled modules and current progress'],
+ timetable:['My Timetable','Upcoming classes and scheduled sessions'],
+ assignments:['Assignments','Deadlines and academic tasks'],
+ results:['Results & Performance','Assessment results and GPA'],
+ payments:['My Payments','Fees, receipts and payment history'],
+ announcements:['Announcements','Institute notices and communications'],
+ students:['Student Management','Learner records and academic profiles'],
+ lecturers:['Lecturer Management','Academic staff and department records'],
+ courseadmin:['Course Management','Programs and module offerings'],
+ classes:['Class Scheduling','Academic timetable and room allocation'],
+ finance:['Payments & Finance','Student payment and receipt records'],
+ analytics:['Academic Analytics','Performance and institutional indicators'],
+ settings:['Portal Settings','Session and account preferences']
+};
+function loadDB(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x)return x}catch(e){}localStorage.setItem(KEY,JSON.stringify(seed));return JSON.parse(JSON.stringify(seed))}
+function saveDB(){localStorage.setItem(KEY,JSON.stringify(db))}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function money(n){return 'LKR '+Number(n||0).toLocaleString('en-LK')}
 function nextId(arr){return Math.max(0,...arr.map(x=>Number(x.id)||0))+1}
-function toast(msg,error=false){const t=document.getElementById("toast");t.querySelector("span").textContent=msg;t.classList.toggle("error",error);t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3000)}
-function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"})}
-function openLogin(){document.getElementById("landing").classList.add("hidden");document.getElementById("loginPage").classList.remove("hidden");window.scrollTo(0,0)}
-function showLanding(){document.getElementById("loginPage").classList.add("hidden");document.getElementById("landing").classList.remove("hidden");window.scrollTo(0,0)}
+function toast(msg,type='info'){const t=document.getElementById('toast');t.className='toast show '+(type==='error'?'error':type==='success'?'success':'');t.querySelector('span').textContent=msg;clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.className='toast',3200)}
+function setPortal(role){currentPortal=role;document.getElementById('chooseStudent').classList.toggle('active',role==='student');document.getElementById('chooseManager').classList.toggle('active',role==='manager');document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';document.getElementById('loginError').textContent='';}
+function openLogin(role='student'){document.getElementById('landing').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden');setPortal(role);setTimeout(()=>document.getElementById('loginUser').focus(),50)}
+function showLanding(){document.getElementById('loginScreen').classList.add('hidden');document.getElementById('portal').classList.add('hidden');document.getElementById('landing').classList.remove('hidden');window.scrollTo(0,0)}
+function togglePassword(){const i=document.getElementById('loginPass'),icon=document.getElementById('eyeIcon');i.type=i.type==='password'?'text':'password';icon.className=i.type==='password'?'fa-solid fa-eye':'fa-solid fa-eye-slash'}
+function fillDemo(){const u=currentPortal==='student'?demoUsers.student:demoUsers.manager;document.getElementById('loginUser').value=u.username;document.getElementById('loginPass').value=u.password;document.getElementById('loginError').textContent=''}
+function forgotPassword(){toast('Demo mode: contact the institute administrator to reset a real account.','info')}
 function login(){
-  const u=document.getElementById("loginUser").value.trim(),p=document.getElementById("loginPass").value;
-  if(u==="admin"&&p==="admin123"){document.getElementById("loginPage").classList.add("hidden");document.getElementById("landing").classList.add("hidden");document.getElementById("dashboard").style.display="block";renderAll();toast("Welcome to the MIZUHO Education Portal.");}
-  else toast("Invalid demo credentials. Use admin / admin123.",true);
+ const u=document.getElementById('loginUser').value.trim().toLowerCase(),p=document.getElementById('loginPass').value,err=document.getElementById('loginError');
+ if(!u||!p){err.textContent='Please enter both username/email and password.';return}
+ const found=Object.values(demoUsers).find(x=>(x.username===u||x.email===u)&&x.password===p);
+ if(!found){err.textContent='Incorrect credentials. Select the correct portal and try again.';return}
+ if(currentPortal==='student'&&found.role!=='student'){err.textContent='This account belongs to the Institute Manager portal.';return}
+ if(currentPortal==='manager'&&found.role!=='manager'){err.textContent='This account belongs to the Student portal.';return}
+ currentUser=found;localStorage.removeItem(SESSION);sessionStorage.removeItem(SESSION);const session={...found,remember:document.getElementById('rememberMe').checked};(session.remember?localStorage:sessionStorage).setItem(SESSION,JSON.stringify(session));document.getElementById('loginScreen').classList.add('hidden');document.getElementById('landing').classList.add('hidden');document.getElementById('portal').classList.remove('hidden');currentSection='overview';renderPortal();toast('Welcome back, '+found.name+'.','success')
 }
-function logout(){document.getElementById("dashboard").style.display="none";showLanding();toast("Signed out successfully.")}
-function toggleSidebar(){document.getElementById("sidebar").classList.toggle("collapsed")}
-const titles={overview:["Academic Overview","MIZUHO Institute management dashboard"],students:["Student Management","Learner records and academic profiles"],lecturers:["Lecturer Management","Academic staff and department records"],courses:["Course Management","Programs and module offerings"],classes:["Class Scheduling","Academic timetable and classroom allocation"],payments:["Payments & Finance","Student payment and receipt records"],announcements:["Announcements","Institute notices and communications"],analytics:["Academic Analytics","Performance and institutional indicators"]};
-function showSection(id,el){
-  document.querySelectorAll(".content-section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelectorAll(".side-nav a").forEach(a=>a.classList.remove("active"));
-  if(el)el.classList.add("active");
-  document.getElementById("pageTitle").textContent=titles[id][0];
-  document.getElementById("pageSubtitle").textContent=titles[id][1];
-  document.getElementById("sidebar").classList.remove("mobile-open");
+function restoreSession(){try{const raw=localStorage.getItem(SESSION)||sessionStorage.getItem(SESSION);if(!raw)return;currentUser=JSON.parse(raw);currentPortal=currentUser.role;document.getElementById('landing').classList.add('hidden');document.getElementById('portal').classList.remove('hidden');renderPortal()}catch(e){localStorage.removeItem(SESSION);sessionStorage.removeItem(SESSION)}}
+function logout(){localStorage.removeItem(SESSION);sessionStorage.removeItem(SESSION);currentUser=null;showLanding();toast('You have been signed out.','success')}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open')}
+function allowed(id){return currentUser?.role==='student'?['overview','profile','courses','timetable','assignments','results','payments','announcements','settings'].includes(id):['overview','students','lecturers','courseadmin','classes','finance','announcements','analytics','settings'].includes(id)}
+function navButton(id,label,icon){return `<button class="${currentSection===id?'active':''}" onclick="showSection('${id}')"><i class="${icon}"></i><span>${label}</span></button>`}
+function buildNav(){const n=document.getElementById('sideNav');if(currentUser.role==='student'){n.innerHTML=[navButton('overview','Dashboard','fa-solid fa-grid-2'),navButton('profile','My Profile','fa-solid fa-user'),navButton('courses','My Courses','fa-solid fa-book-open'),navButton('timetable','Timetable','fa-solid fa-calendar-days'),navButton('assignments','Assignments','fa-solid fa-list-check'),navButton('results','Results','fa-solid fa-chart-column'),navButton('payments','Payments','fa-solid fa-wallet'),navButton('announcements','Announcements','fa-solid fa-bullhorn'),navButton('settings','Settings','fa-solid fa-gear')].join('')}else{n.innerHTML=[navButton('overview','Dashboard','fa-solid fa-grid-2'),navButton('students','Students','fa-solid fa-user-graduate'),navButton('lecturers','Lecturers','fa-solid fa-chalkboard-user'),navButton('courseadmin','Courses','fa-solid fa-book'),navButton('classes','Classes','fa-solid fa-calendar-days'),navButton('finance','Finance','fa-solid fa-wallet'),navButton('announcements','Announcements','fa-solid fa-bullhorn'),navButton('analytics','Analytics','fa-solid fa-chart-line'),navButton('settings','Settings','fa-solid fa-gear')].join('')}}
+function showSection(id){if(!allowed(id)){toast('You do not have permission to access this section.','error');return}currentSection=id;renderPortal();document.getElementById('sidebar').classList.remove('open')}
+function renderPortal(){buildNav();document.getElementById('sideRole').textContent=currentUser.role==='student'?'STUDENT PORTAL':'INSTITUTE MANAGER';document.getElementById('sideUser').textContent=currentUser.name;document.getElementById('sideEmail').textContent=currentUser.email;document.getElementById('headName').textContent=currentUser.name;document.getElementById('avatar').textContent=currentUser.name.split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase();document.getElementById('pageTitle').textContent=titles[currentSection][0];document.getElementById('pageSubtitle').textContent=titles[currentSection][1];document.getElementById('content').innerHTML=currentUser.role==='student'?studentView(currentSection):managerView(currentSection);bindDynamic()}
+function studentView(s){
+const me=db.students.find(x=>x.id===currentUser.id)||db.students[0];
+if(s==='overview')return `<div class="student-welcome"><div><h2>Welcome, ${esc(me.name.split(' ')[0])}!</h2><p>${esc(me.program)} • ${esc(me.year)} • Student ID ST-${me.id}</p></div><div class="welcome-chip"><i class="fa-solid fa-circle-check"></i> Account: ${esc(me.status)}</div></div>${studentStats(me)}<div class="grid2"><div class="panel"><div class="panel-head"><h3>Current Modules</h3><button class="btn small light" onclick="showSection('courses')">View all</button></div>${courseProgress()}</div><div class="panel"><div class="panel-head"><h3>Upcoming Classes</h3><button class="btn small light" onclick="showSection('timetable')">Timetable</button></div>${upcomingClasses()}</div></div><div class="grid2"><div class="panel"><div class="panel-head"><h3>Latest Announcements</h3><button class="btn small light" onclick="showSection('announcements')">All notices</button></div>${announcementList(3)}</div><div class="panel"><div class="panel-head"><h3>Academic Performance</h3></div><div style="font-size:12px;color:var(--muted)">Current GPA</div><div style="font-size:40px;font-weight:800;color:var(--navy);margin-top:4px">${me.gpa.toFixed(2)}</div><div class="progress"><i style="width:${Math.min(100,me.gpa/4*100)}%"></i></div><div class="muted" style="margin-top:9px">Target: 4.00</div></div></div>`;
+if(s==='profile')return `<div class="panel"><div class="panel-head"><h3>Personal & Academic Profile</h3><button class="btn small" onclick="openProfileEdit()">Edit Profile</button></div><div class="form-grid"><div><label class="muted">Full Name</label><div class="form-control">${esc(me.name)}</div></div><div><label class="muted">Student ID</label><div class="form-control">ST-${me.id}</div></div><div><label class="muted">Email</label><div class="form-control">${esc(me.email)}</div></div><div><label class="muted">Phone</label><div class="form-control">${esc(me.phone)}</div></div><div><label class="muted">Program</label><div class="form-control">${esc(me.program)}</div></div><div><label class="muted">Year</label><div class="form-control">${esc(me.year)}</div></div></div></div>`;
+if(s==='courses')return `<div class="course-cards">${db.courses.map(c=>`<div class="course-mini"><div class="program-icon"><i class="fa-solid fa-book-open"></i></div><h4>${esc(c.id)} — ${esc(c.name)}</h4><p>${esc(c.department)} • ${esc(c.duration)}</p><div class="muted">Progress</div><div class="progress"><i style="width:${c.id==='IT101'?76:c.id==='DA301'?64:58}%"></i></div><div style="margin-top:9px;font-size:10px;color:var(--muted)">Active module</div></div>`).join('')}</div>`;
+if(s==='timetable')return `<div class="panel"><div class="panel-head"><h3>Upcoming Timetable</h3></div>${classTable(db.classes)}</div>`;
+if(s==='assignments')return `<div class="panel"><div class="panel-head"><h3>Assignments</h3><span class="muted">Academic tasks</span></div><div class="list">${[['Database Design','IT101','2026-08-28','Pending'],['Business Case Analysis','BM201','2026-09-02','In Progress'],['Python Data Project','DA301','2026-09-05','Not Started']].map(a=>`<div class="list-item"><strong>${a[0]} <span class="badge ${a[3]==='Pending'?'b-gold':'b-green'}" style="float:right">${a[3]}</span></strong><span>${a[1]} • Due ${a[2]}</span></div>`).join('')}</div></div>`;
+if(s==='results')return `<div class="grid2"><div class="panel"><div class="panel-head"><h3>Assessment Results</h3></div>${resultRows()}</div><div class="panel"><div class="panel-head"><h3>Grade Distribution</h3></div><div class="chart">${[82,74,91,78,88,95].map((x,i)=>`<div class="bar" style="height:${x*1.35}px"><span>${['IT','DB','WEB','NET','MATH','PROJ'][i]}</span></div>`).join('')}</div></div></div>`;
+if(s==='payments')return `<div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-wallet"></i></div><h3>Total Paid</h3><strong>${money(db.payments.filter(p=>p.student===me.name).reduce((a,b)=>a+Number(b.amount),0))}</strong><small>Recorded payments</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-receipt"></i></div><h3>Transactions</h3><strong>${db.payments.filter(p=>p.student===me.name).length}</strong><small>Receipts</small></div></div><div class="panel" style="margin-top:18px"><div class="panel-head"><h3>Payment History</h3></div>${paymentTable(db.payments.filter(p=>p.student===me.name))}</div>`;
+if(s==='announcements')return `<div class="panel"><div class="panel-head"><h3>Institute Announcements</h3></div>${announcementList(20)}</div>`;
+if(s==='settings')return settingsView();
 }
-function badge(status){
-  const cls=status==="Active"?"b-green":status==="Pending"?"b-gold":"b-red";
-  return `<span class="badge ${cls}">${status}</span>`;
+function studentStats(me){return `<div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-book"></i></div><h3>Enrolled Modules</h3><strong>4</strong><small>Current semester</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-chart-line"></i></div><h3>Current GPA</h3><strong>${me.gpa.toFixed(2)}</strong><small>Out of 4.00</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-list-check"></i></div><h3>Open Assignments</h3><strong>3</strong><small>Due soon</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-calendar"></i></div><h3>Next Class</h3><strong>08:30</strong><small>AM • Lab 01</small></div></div>`}
+function courseProgress(){return `<div class="list">${db.courses.slice(0,4).map((c,i)=>`<div class="list-item"><strong>${esc(c.id)} — ${esc(c.name)}</strong><span>${esc(c.department)}</span><div class="progress"><i style="width:${[76,64,58,82][i]}%"></i></div></div>`).join('')}</div>`}
+function upcomingClasses(){return `<div class="list">${db.classes.slice(0,3).map(c=>`<div class="list-item"><strong>${esc(c.name)}</strong><span>${esc(c.date)} • ${esc(c.time)} • ${esc(c.room)}</span></div>`).join('')}</div>`}
+function announcementList(limit){return `<div class="list">${db.announcements.slice(0,limit).map(a=>`<div class="list-item"><strong>${esc(a.title)}</strong><span>${esc(a.text)}<br><b>${esc(a.date)} • ${esc(a.type)}</b></span></div>`).join('')}</div>`}
+function resultRows(){return `<div class="list">${[['Database Systems','A','86'],['Web Engineering','A-','82'],['Networking','B+','78'],['Software Engineering','A','88'],['Mathematics','A+','95']].map(x=>`<div class="list-item"><strong>${x[0]} <span style="float:right;color:var(--green)">${x[1]} • ${x[2]}%</span></strong><span>Final assessment</span></div>`).join('')}</div>`}
+function paymentTable(rows){if(!rows.length)return '<div class="empty">No payment records found.</div>';return `<div class="table-wrap"><table class="table"><thead><tr><th>Receipt</th><th>Amount</th><th>Method</th><th>Date</th><th>Status</th></tr></thead><tbody>${rows.map(p=>`<tr><td>RC-${p.id}</td><td>${money(p.amount)}</td><td>${esc(p.method)}</td><td>${esc(p.date)}</td><td><span class="badge b-green">${esc(p.status)}</span></td></tr>`).join('')}</tbody></table></div>`}
+function classTable(rows){return `<div class="table-wrap"><table class="table"><thead><tr><th>Class</th><th>Course</th><th>Lecturer</th><th>Date</th><th>Time</th><th>Room</th></tr></thead><tbody>${rows.map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.course)}</td><td>${esc(c.lecturer)}</td><td>${esc(c.date)}</td><td>${esc(c.time)}</td><td>${esc(c.room)}</td></tr>`).join('')}</tbody></table></div>`}
+function managerView(s){
+if(s==='overview')return `<div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-user-graduate"></i></div><h3>Total Students</h3><strong>${db.students.length}</strong><small>Registered learners</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-chalkboard-user"></i></div><h3>Lecturers</h3><strong>${db.lecturers.length}</strong><small>Academic staff</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-book"></i></div><h3>Courses</h3><strong>${db.courses.length}</strong><small>Active offerings</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-wallet"></i></div><h3>Revenue</h3><strong>${money(db.payments.reduce((a,b)=>a+Number(b.amount),0))}</strong><small>Recorded transactions</small></div></div><div class="grid2"><div class="panel"><div class="panel-head"><h3>Recent Students</h3><button class="btn small light" onclick="showSection('students')">Manage</button></div>${managerStudentTable(db.students.slice(-5).reverse(),false)}</div><div class="panel"><div class="panel-head"><h3>Latest Announcements</h3><button class="btn small light" onclick="showSection('announcements')">Manage</button></div>${announcementList(4)}</div></div><div class="panel" style="margin-top:18px"><div class="panel-head"><h3>Enrollment by Program</h3><span class="muted">Current records</span></div>${db.courses.map(c=>`<div style="margin:13px 0"><div style="display:flex;justify-content:space-between;font-size:11px"><b>${esc(c.name)}</b><span>${c.students}</span></div><div class="progress"><i style="width:${Math.min(100,c.students/150*100)}%"></i></div></div>`).join('')}</div>`;
+if(s==='students')return crudTable('students','Students',db.students,`<input id="studentSearch" class="search" placeholder="Search students..." oninput="filterTable('students')">`);
+if(s==='lecturers')return crudTable('lecturers','Lecturers',db.lecturers,`<input id="lecturerSearch" class="search" placeholder="Search lecturers..." oninput="filterTable('lecturers')">`);
+if(s==='courseadmin')return crudTable('courses','Courses',db.courses,`<input id="courseSearch" class="search" placeholder="Search courses..." oninput="filterTable('courses')">`);
+if(s==='classes')return crudTable('classes','Classes',db.classes,`<input id="classSearch" class="search" placeholder="Search classes..." oninput="filterTable('classes')">`);
+if(s==='finance')return `<div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-wallet"></i></div><h3>Total Collected</h3><strong>${money(db.payments.reduce((a,b)=>a+Number(b.amount),0))}</strong><small>All transactions</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-receipt"></i></div><h3>Transactions</h3><strong>${db.payments.length}</strong><small>Recorded payments</small></div></div><div class="panel" style="margin-top:18px"><div class="toolbar"><input id="paymentSearch" class="search" placeholder="Search payments..." oninput="filterTable('payments')"><button class="btn" onclick="openRecordForm('payments')"><i class="fa-solid fa-plus"></i> Record Payment</button></div><div id="managerTable">${paymentManagerTable(db.payments)}</div></div>`;
+if(s==='announcements')return `<div class="panel"><div class="toolbar"><input id="announcementSearch" class="search" placeholder="Search announcements..." oninput="filterTable('announcements')"><button class="btn" onclick="openRecordForm('announcements')"><i class="fa-solid fa-plus"></i> New Announcement</button></div><div id="managerTable">${announcementManagerTable(db.announcements)}</div></div>`;
+if(s==='analytics')return `<div class="dashboard-cards"><div class="d-card"><div class="d-top"><i class="fa-solid fa-chart-line"></i></div><h3>Average GPA</h3><strong>${(db.students.reduce((a,b)=>a+b.gpa,0)/db.students.length).toFixed(2)}</strong><small>Across students</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-user-check"></i></div><h3>Active Students</h3><strong>${db.students.filter(x=>x.status==='Active').length}</strong><small>Current status</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-calendar-check"></i></div><h3>Scheduled Classes</h3><strong>${db.classes.length}</strong><small>Upcoming sessions</small></div><div class="d-card"><div class="d-top"><i class="fa-solid fa-percent"></i></div><h3>Collection Rate</h3><strong>94%</strong><small>Demo indicator</small></div></div><div class="grid2"><div class="panel"><div class="panel-head"><h3>Student GPA Distribution</h3></div><div class="chart">${db.students.map(s=>`<div class="bar" style="height:${Math.max(35,s.gpa/4*150)}px"><span>${esc(s.name.split(' ')[0])}</span></div>`).join('')}</div></div><div class="panel"><div class="panel-head"><h3>Program Enrollment</h3></div>${db.courses.map(c=>`<div style="margin:15px 0"><div style="display:flex;justify-content:space-between;font-size:11px"><b>${esc(c.name)}</b><span>${c.students}</span></div><div class="progress"><i style="width:${Math.min(100,c.students/150*100)}%"></i></div></div>`).join('')}</div></div>`;
+if(s==='settings')return settingsView();
 }
-function renderStudents(){
-  const q=(document.getElementById("studentSearch")?.value||"").toLowerCase();
-  const rows=db.students.filter(s=>[s.name,s.email,s.program].join(" ").toLowerCase().includes(q));
-  document.getElementById("studentTable").innerHTML=rows.map(s=>`<tr><td>ST-${s.id}</td><td><b>${s.name}</b></td><td>${s.email}</td><td>${s.program}</td><td>${badge(s.status)}</td><td><div class="actions"><button class="act" onclick="editRecord('students',${s.id})"><i class="fa-solid fa-pen"></i></button><button class="act del" onclick="deleteRecord('students',${s.id})"><i class="fa-solid fa-trash"></i></button></div></td></tr>`).join("");
-}
-function renderLecturers(){
-  const q=(document.getElementById("lecturerSearch")?.value||"").toLowerCase();
-  const rows=db.lecturers.filter(s=>[s.name,s.email,s.department].join(" ").toLowerCase().includes(q));
-  document.getElementById("lecturerTable").innerHTML=rows.map(s=>`<tr><td>LC-${s.id}</td><td><b>${s.name}</b></td><td>${s.department}</td><td>${s.email}</td><td>${badge(s.status)}</td><td><div class="actions"><button class="act" onclick="editRecord('lecturers',${s.id})"><i class="fa-solid fa-pen"></i></button><button class="act del" onclick="deleteRecord('lecturers',${s.id})"><i class="fa-solid fa-trash"></i></button></div></td></tr>`).join("");
-}
-function renderCourses(){
-  const q=(document.getElementById("courseSearch")?.value||"").toLowerCase();
-  const rows=db.courses.filter(s=>[s.id,s.name,s.department].join(" ").toLowerCase().includes(q));
-  document.getElementById("courseTable").innerHTML=rows.map(s=>`<tr><td><b>${s.id}</b></td><td>${s.name}</td><td>${s.department}</td><td>${s.duration}</td><td>${s.students}</td><td><div class="actions"><button class="act" onclick="editRecord('courses','${s.id}')"><i class="fa-solid fa-pen"></i></button><button class="act del" onclick="deleteRecord('courses','${s.id}')"><i class="fa-solid fa-trash"></i></button></div></td></tr>`).join("");
-}
-function renderClasses(){
-  const q=(document.getElementById("classSearch")?.value||"").toLowerCase();
-  const rows=db.classes.filter(s=>[s.name,s.course,s.lecturer,s.room].join(" ").toLowerCase().includes(q));
-  document.getElementById("classTable").innerHTML=rows.map(s=>`<tr><td><b>${s.name}</b></td><td>${s.course}</td><td>${s.lecturer}</td><td>${s.date}</td><td>${s.time}</td><td>${s.room}</td><td><div class="actions"><button class="act" onclick="editRecord('classes',${s.id})"><i class="fa-solid fa-pen"></i></button><button class="act del" onclick="deleteRecord('classes',${s.id})"><i class="fa-solid fa-trash"></i></button></div></td></tr>`).join("");
-}
-function renderPayments(){
-  const q=(document.getElementById("paymentSearch")?.value||"").toLowerCase();
-  const rows=db.payments.filter(s=>[s.student,s.method,s.date].join(" ").toLowerCase().includes(q));
-  document.getElementById("paymentTable").innerHTML=rows.map(s=>`<tr><td>INV-${s.id}</td><td>${s.student}</td><td><b>${money(s.amount)}</b></td><td>${s.method}</td><td>${s.date}</td><td><div class="actions"><button class="act del" onclick="deleteRecord('payments',${s.id})"><i class="fa-solid fa-trash"></i></button></div></td></tr>`).join("");
-}
-function renderAnnouncements(){
-  const list=document.getElementById("announcementList");
-  list.innerHTML=db.announcements.map(a=>`<div class="panel"><div class="panel-body"><div style="display:flex;justify-content:space-between;gap:15px"><div><span class="badge b-blue">${a.type}</span><h3 style="font-size:15px;color:var(--navy);margin:9px 0 5px">${a.title}</h3><p style="font-size:11px;color:var(--muted);line-height:1.6">${a.text}</p><small style="font-size:9px;color:var(--muted)">${a.date}</small></div><button class="act del" onclick="deleteRecord('announcements',${a.id})"><i class="fa-solid fa-trash"></i></button></div></div></div>`).join("");
-  document.getElementById("recentNotices").innerHTML=db.announcements.slice(0,3).map(a=>`<div class="notice"><i class="fa-solid fa-bullhorn"></i><div><strong>${a.title}</strong><span>${a.date} • ${a.type}</span></div></div>`).join("");
-}
-function renderCharts(){
-  const enrollment=[42,58,66,75,91,105,118];const perf=[71,76,80,83,88,91];
-  const make=(data,labels,id)=>document.getElementById(id).innerHTML=data.map((v,i)=>`<div class="bar"><b>${v}</b><div class="bar-fill" style="height:${v*1.55}px"></div><label>${labels[i]}</label></div>`).join("");
-  make(enrollment,["Feb","Mar","Apr","May","Jun","Jul","Aug"],"enrollmentChart");
-  make(perf,["Mar","Apr","May","Jun","Jul","Aug"],"performanceChart");
-}
-function renderAll(){
-  document.getElementById("countStudents").textContent=db.students.length;
-  document.getElementById("countLecturers").textContent=db.lecturers.length;
-  document.getElementById("countCourses").textContent=db.courses.length;
-  const total=db.payments.reduce((a,p)=>a+Number(p.amount||0),0);
-  document.getElementById("totalRevenue").textContent=money(total);
-  document.getElementById("paymentTotal").textContent=money(total);
-  document.getElementById("paymentCount").textContent=db.payments.length;
-  renderStudents();renderLecturers();renderCourses();renderClasses();renderPayments();renderAnnouncements();renderCharts();
-}
-function field(label,id,value="",type="text",full=false){
-  return `<div class="${full?"full":""}"><label class="form-label">${label}</label><input id="${id}" class="input" type="${type}" value="${String(value).replace(/"/g,"&quot;")}"></div>`;
-}
-function openCreate(type){
-  modalType=type;document.getElementById("modalTitle").textContent="Create "+type.charAt(0).toUpperCase()+type.slice(1)+" Record";
-  let h="";
-  if(type==="students")h=`<div class="form-grid">${field("Full Name","f1")} ${field("Email","f2","", "email")} ${field("Program","f3","Information Technology")} ${field("Status","f4","Active")}</div>`;
-  if(type==="lecturers")h=`<div class="form-grid">${field("Full Name","f1")} ${field("Email","f2","", "email")} ${field("Department","f3","Computing")} ${field("Status","f4","Active")}</div>`;
-  if(type==="courses")h=`<div class="form-grid">${field("Course Code","f1")} ${field("Course Name","f2")} ${field("Department","f3","Computing")} ${field("Duration","f4","12 Months")} ${field("Students","f5","0","number")}</div>`;
-  if(type==="classes")h=`<div class="form-grid">${field("Class Name","f1")} ${field("Course","f2",db.courses[0]?.name||"Information Technology")} ${field("Lecturer","f3",db.lecturers[0]?.name||"")} ${field("Date","f4","2026-09-01","date")} ${field("Time","f5","08:30 AM")} ${field("Room","f6","Room 101")}</div>`;
-  if(type==="payments")h=`<div class="form-grid">${field("Student","f1",db.students[0]?.name||"")} ${field("Amount (LKR)","f2","25000","number")} ${field("Method","f3","Bank Transfer")} ${field("Date","f4","2026-08-25","date")}</div>`;
-  if(type==="announcements")h=`<div class="form-grid">${field("Title","f1")} ${field("Type","f2","Academic")} ${field("Date","f3","2026-08-25","date")} ${field("Message","f4","", "text",true)}</div>`;
-  document.getElementById("modalBody").innerHTML=h;document.getElementById("modalBg").classList.add("show");
-}
-function closeModal(){document.getElementById("modalBg").classList.remove("show")}
-function submitModal(){
-  const v=id=>document.getElementById(id)?.value.trim();
-  if(modalType==="students")db.students.push({id:nextId(db.students),name:v("f1"),email:v("f2"),program:v("f3"),status:v("f4")||"Active"});
-  if(modalType==="lecturers")db.lecturers.push({id:nextId(db.lecturers),name:v("f1"),email:v("f2"),department:v("f3"),status:v("f4")||"Active"});
-  if(modalType==="courses")db.courses.push({id:v("f1"),name:v("f2"),department:v("f3"),duration:v("f4"),students:Number(v("f5")||0)});
-  if(modalType==="classes")db.classes.push({id:nextId(db.classes),name:v("f1"),course:v("f2"),lecturer:v("f3"),date:v("f4"),time:v("f5"),room:v("f6")});
-  if(modalType==="payments")db.payments.push({id:nextId(db.payments),student:v("f1"),amount:Number(v("f2")||0),method:v("f3"),date:v("f4")});
-  if(modalType==="announcements")db.announcements.unshift({id:nextId(db.announcements),title:v("f1"),type:v("f2"),date:v("f3"),text:v("f4")});
-  save();closeModal();toast("Record saved successfully.");
-}
-function editRecord(type,id){
-  const rec=db[type].find(x=>String(x.id)===String(id));if(!rec)return;
-  openCreate(type);
-  setTimeout(()=>{
-    const map={students:["name","email","program","status"],lecturers:["name","email","department","status"],courses:["id","name","department","duration","students"],classes:["name","course","lecturer","date","time","room"],payments:["student","amount","method","date"],announcements:["title","type","date","text"]};
-    map[type].forEach((k,i)=>{const el=document.getElementById("f"+(i+1));if(el)el.value=rec[k]??""});
-    document.getElementById("modalTitle").textContent="Edit "+type.charAt(0).toUpperCase()+type.slice(1)+" Record";
-    document.querySelector("#modalBg .btn:not(.light)").onclick=()=>updateRecord(type,id);
-  },0);
-}
-function updateRecord(type,id){
-  const rec=db[type].find(x=>String(x.id)===String(id));if(!rec)return;
-  const map={students:["name","email","program","status"],lecturers:["name","email","department","status"],courses:["id","name","department","duration","students"],classes:["name","course","lecturer","date","time","room"],announcements:["title","type","date","text"]};
-  map[type].forEach((k,i)=>{const el=document.getElementById("f"+(i+1));if(el)rec[k]=k==="students"&&false?el.value:(k==="students"?el.value:el.value)});
-  if(type==="payments"){rec.student=document.getElementById("f1").value;rec.amount=Number(document.getElementById("f2").value);rec.method=document.getElementById("f3").value;rec.date=document.getElementById("f4").value}
-  save();closeModal();document.querySelector("#modalBg .btn:not(.light)").onclick=submitModal;toast("Record updated successfully.");
-}
-function deleteRecord(type,id){
-  if(!confirm("Delete this record?"))return;
-  db[type]=db[type].filter(x=>String(x.id)!==String(id));save();toast("Record deleted.");
-}
-window.addEventListener("load",()=>{
-  load();renderAll();document.getElementById("year").textContent=new Date().getFullYear();
-});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+function crudTable(type,label,rows,search){let body=type==='students'?managerStudentTable(rows,true):type==='lecturers'?lecturerTable(rows):type==='courses'?courseManagerTable(rows):classManagerTable(rows);return `<div class="panel"><div class="toolbar"><div class="toolbar-left">${search}</div><button class="btn" onclick="openRecordForm('${type}')"><i class="fa-solid fa-plus"></i> Add ${label.slice(0,-1)}</button></div><div id="managerTable">${body}</div></div>`}
+function managerStudentTable(rows,actions){if(!rows.length)return '<div class="empty">No students found.</div>';return `<div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Program</th><th>Year</th><th>Status</th>${actions?'<th>Actions</th>':''}</tr></thead><tbody>${rows.map(s=>`<tr><td>ST-${s.id}</td><td><b>${esc(s.name)}</b></td><td>${esc(s.email)}</td><td>${esc(s.program)}</td><td>${esc(s.year)}</td><td>${badge(s.status)}</td>${actions?`<td>${actionBtns('students',s.id)}</td>`:''}</tr>`).join('')}</tbody></table></div>`}
+function lecturerTable(rows){return `<div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Lecturer</th><th>Department</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead><tbody>${rows.map(s=>`<tr><td>LC-${s.id}</td><td><b>${esc(s.name)}</b></td><td>${esc(s.department)}</td><td>${esc(s.email)}</td><td>${badge(s.status)}</td><td>${actionBtns('lecturers',s.id)}</td></tr>`).join('')}</tbody></table></div>`}
+function courseManagerTable(rows){return `<div class="table-wrap"><table class="table"><thead><tr><th>Code</th><th>Course</th><th>Department</th><th>Duration</th><th>Students</th><th>Actions</th></tr></thead><tbody>${rows.map(c=>`<tr><td>${esc(c.id)}</td><td><b>${esc(c.name)}</b></td><td>${esc(c.department)}</td><td>${esc(c.duration)}</td><td>${c.students}</td><td>${actionBtns('courses',c.id,true)}</td></tr>`).join('')}</tbody></table></div>`}
+function classManagerTable(rows){return `<div class="table-wrap"><table class="table"><thead><tr><th>Class</th><th>Course</th><th>Lecturer</th><th>Date</th><th>Time</th><th>Room</th><th>Actions</th></tr></thead><tbody>${rows.map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.course)}</td><td>${esc(c.lecturer)}</td><td>${esc(c.date)}</td><td>${esc(c.time)}</td><td>${esc(c.room)}</td><td>${actionBtns('classes',c.id)}</td></tr>`).join('')}</tbody></table></div>`}
+function paymentManagerTable(rows){return `<div class="table-wrap"><table class="table"><thead><tr><th>Receipt</th><th>Student</th><th>Amount</th><th>Method</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>${rows.map(p=>`<tr><td>RC-${p.id}</td><td>${esc(p.student)}</td><td>${money(p.amount)}</td><td>${esc(p.method)}</td><td>${esc(p.date)}</td><td>${badge(p.status)}</td><td>${actionBtns('payments',p.id)}</td></tr>`).join('')}</tbody></table></div>`}
+function announcementManagerTable(rows){return `<div class="table-wrap"><table class="table"><thead><tr><th>Title</th><th>Type</th><th>Date</th><th>Message</th><th>Actions</th></tr></thead><tbody>${rows.map(a=>`<tr><td><b>${esc(a.title)}</b></td><td>${esc(a.type)}</td><td>${esc(a.date)}</td><td>${esc(a.text)}</td><td>${actionBtns('announcements',a.id)}</td></tr>`).join('')}</tbody></table></div>`}
+function badge(s){return `<span class="badge ${s==='Active'||s==='Paid'?'b-green':s==='Pending'?'b-gold':'b-red'}">${esc(s)}</span>`}
+function actionBtns(type,id,stringId=false){const arg=stringId?JSON.stringify(id):id;return `<div class="actions"><button class="act" onclick='openRecordForm(${JSON.stringify(type)},${JSON.stringify(id)})' title="Edit"><i class="fa-solid fa-pen"></i></button><button class="act del" onclick='deleteRecord(${JSON.stringify(type)},${JSON.stringify(id)})' title="Delete"><i class="fa-solid fa-trash"></i></button></div>`}
+function settingsView(){return `<div class="grid2"><div class="panel"><div class="panel-head"><h3>Account</h3></div><div class="form-grid"><div><label class="muted">Name</label><div class="form-control">${esc(currentUser.name)}</div></div><div><label class="muted">Role</label><div class="form-control">${currentUser.role==='student'?'Student':'Institute Manager'}</div></div><div class="full"><label class="muted">Email</label><div class="form-control">${esc(currentUser.email)}</div></div></div></div><div class="panel"><div class="panel-head"><h3>Session</h3></div><p class="muted" style="line-height:1.7">This demo stores records in your browser's localStorage. It is suitable for a prototype, not production authentication.</p><button class="btn danger" style="margin-top:16px" onclick="logout()">Sign Out</button></div></div>`}
+function openProfileEdit(){const me=db.students.find(x=>x.id===currentUser.id)||db.students[0];modalState={type:'profile',id:me.id};document.getElementById('modalTitle').textContent='Edit Profile';document.getElementById('modalBody').innerHTML=`<div class="form-grid"><div class="full"><label class="muted">Full Name</label><input id="f_name" class="form-control" value="${esc(me.name)}"></div><div><label class="muted">Email</label><input id="f_email" class="form-control" value="${esc(me.email)}"></div><div><label class="muted">Phone</label><input id="f_phone" class="form-control" value="${esc(me.phone)}"></div></div><div class="modal-actions"><button class="btn light" onclick="closeModal()">Cancel</button><button class="btn" onclick="saveProfile()">Save Changes</button></div>`;document.getElementById('modal').classList.remove('hidden')}
+function saveProfile(){const me=db.students.find(x=>x.id===modalState.id);me.name=document.getElementById('f_name').value.trim();me.email=document.getElementById('f_email').value.trim();me.phone=document.getElementById('f_phone').value.trim();currentUser.name=me.name;currentUser.email=me.email;const activeStore=localStorage.getItem(SESSION)?localStorage:sessionStorage;activeStore.setItem(SESSION,JSON.stringify({...currentUser,remember:!!localStorage.getItem(SESSION)}));saveDB();closeModal();renderPortal();toast('Profile updated successfully.','success')}
+function openRecordForm(type,id=null){modalState={type,id};const edit=id!==null;document.getElementById('modalTitle').textContent=(edit?'Edit ':'Add ')+({students:'Student',lecturers:'Lecturer',courses:'Course',classes:'Class',payments:'Payment',announcements:'Announcement'}[type]);const r=edit?db[type].find(x=>String(x.id)===String(id)):{};let f='';if(type==='students')f=`<div class="form-grid"><div><label class="muted">Full Name</label><input id="f_name" class="form-control" value="${esc(r.name)}"></div><div><label class="muted">Email</label><input id="f_email" class="form-control" value="${esc(r.email)}"></div><div><label class="muted">Phone</label><input id="f_phone" class="form-control" value="${esc(r.phone)}"></div><div><label class="muted">Program</label><select id="f_program" class="form-control">${['Information Technology','Business & Management','Data & Analytics','Computing & Engineering'].map(x=>`<option ${r.program===x?'selected':''}>${x}</option>`).join('')}</select></div><div><label class="muted">Year</label><select id="f_year" class="form-control">${['Year 1','Year 2','Year 3','Year 4'].map(x=>`<option ${r.year===x?'selected':''}>${x}</option>`).join('')}</select></div><div><label class="muted">Status</label><select id="f_status" class="form-control"><option ${r.status==='Active'?'selected':''}>Active</option><option ${r.status==='Pending'?'selected':''}>Pending</option><option ${r.status==='Inactive'?'selected':''}>Inactive</option></select></div></div>`;
+if(type==='lecturers')f=`<div class="form-grid"><div><label class="muted">Name</label><input id="f_name" class="form-control" value="${esc(r.name)}"></div><div><label class="muted">Email</label><input id="f_email" class="form-control" value="${esc(r.email)}"></div><div><label class="muted">Department</label><input id="f_department" class="form-control" value="${esc(r.department)}"></div><div><label class="muted">Status</label><select id="f_status" class="form-control"><option>Active</option><option>Inactive</option></select></div></div>`;
+if(type==='courses')f=`<div class="form-grid"><div><label class="muted">Course Code</label><input id="f_id" class="form-control" value="${esc(r.id)}" ${edit?'readonly':''}></div><div><label class="muted">Course Name</label><input id="f_name" class="form-control" value="${esc(r.name)}"></div><div><label class="muted">Department</label><input id="f_department" class="form-control" value="${esc(r.department)}"></div><div><label class="muted">Duration</label><input id="f_duration" class="form-control" value="${esc(r.duration)}"></div><div><label class="muted">Students</label><input id="f_students" type="number" class="form-control" value="${r.students||0}"></div></div>`;
+if(type==='classes')f=`<div class="form-grid"><div><label class="muted">Class Name</label><input id="f_name" class="form-control" value="${esc(r.name)}"></div><div><label class="muted">Course</label><select id="f_course" class="form-control">${db.courses.map(x=>`<option ${r.course===x.name?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div><div><label class="muted">Lecturer</label><select id="f_lecturer" class="form-control">${db.lecturers.map(x=>`<option ${r.lecturer===x.name?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div><div><label class="muted">Date</label><input id="f_date" type="date" class="form-control" value="${esc(r.date)}"></div><div><label class="muted">Time</label><input id="f_time" class="form-control" value="${esc(r.time)}"></div><div><label class="muted">Room</label><input id="f_room" class="form-control" value="${esc(r.room)}"></div></div>`;
+if(type==='payments')f=`<div class="form-grid"><div><label class="muted">Student</label><select id="f_student" class="form-control">${db.students.map(x=>`<option ${r.student===x.name?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div><div><label class="muted">Amount (LKR)</label><input id="f_amount" type="number" min="0" class="form-control" value="${r.amount||''}"></div><div><label class="muted">Method</label><select id="f_method" class="form-control">${['Bank Transfer','Card','Cash','Online'].map(x=>`<option ${r.method===x?'selected':''}>${x}</option>`).join('')}</select></div><div><label class="muted">Date</label><input id="f_date" type="date" class="form-control" value="${esc(r.date||new Date().toISOString().slice(0,10))}"></div><div><label class="muted">Status</label><select id="f_status" class="form-control"><option>Paid</option><option>Pending</option><option>Refunded</option></select></div></div>`;
+if(type==='announcements')f=`<div class="form-grid"><div class="full"><label class="muted">Title</label><input id="f_title" class="form-control" value="${esc(r.title)}"></div><div><label class="muted">Type</label><select id="f_type" class="form-control">${['Academic','Notice','Event'].map(x=>`<option ${r.type===x?'selected':''}>${x}</option>`).join('')}</select></div><div><label class="muted">Date</label><input id="f_date" type="date" class="form-control" value="${esc(r.date||new Date().toISOString().slice(0,10))}"></div><div class="full"><label class="muted">Message</label><textarea id="f_text" class="form-control" rows="5">${esc(r.text)}</textarea></div></div>`;
+document.getElementById('modalBody').innerHTML=f+`<div class="modal-actions"><button class="btn light" onclick="closeModal()">Cancel</button><button class="btn" onclick="saveRecord()">Save</button></div>`;document.getElementById('modal').classList.remove('hidden')}
+function saveRecord(){const t=modalState.type,id=modalState.id,edit=id!==null;let r=edit?db[t].find(x=>String(x.id)===String(id)):null;if(t==='students'){if(!r){r={id:nextId(db.students)};db.students.push(r)}Object.assign(r,{name:document.getElementById('f_name').value.trim(),email:document.getElementById('f_email').value.trim(),phone:document.getElementById('f_phone').value.trim(),program:document.getElementById('f_program').value,year:document.getElementById('f_year').value,status:document.getElementById('f_status').value,gpa:r.gpa||3.0})}
+else if(t==='lecturers'){if(!r){r={id:nextId(db.lecturers)};db.lecturers.push(r)}Object.assign(r,{name:document.getElementById('f_name').value.trim(),email:document.getElementById('f_email').value.trim(),department:document.getElementById('f_department').value.trim(),status:document.getElementById('f_status').value})}
+else if(t==='courses'){if(!r){r={id:document.getElementById('f_id').value.trim()||'NEW'};db.courses.push(r)}Object.assign(r,{id:r.id,name:document.getElementById('f_name').value.trim(),department:document.getElementById('f_department').value.trim(),duration:document.getElementById('f_duration').value.trim(),students:Number(document.getElementById('f_students').value)||0})}
+else if(t==='classes'){if(!r){r={id:nextId(db.classes)};db.classes.push(r)}Object.assign(r,{name:document.getElementById('f_name').value.trim(),course:document.getElementById('f_course').value,lecturer:document.getElementById('f_lecturer').value,date:document.getElementById('f_date').value,time:document.getElementById('f_time').value.trim(),room:document.getElementById('f_room').value.trim()})}
+else if(t==='payments'){if(!r){r={id:nextId(db.payments)};db.payments.push(r)}Object.assign(r,{student:document.getElementById('f_student').value,amount:Number(document.getElementById('f_amount').value)||0,method:document.getElementById('f_method').value,date:document.getElementById('f_date').value,status:document.getElementById('f_status').value})}
+else if(t==='announcements'){if(!r){r={id:nextId(db.announcements)};db.announcements.push(r)}Object.assign(r,{title:document.getElementById('f_title').value.trim(),type:document.getElementById('f_type').value,date:document.getElementById('f_date').value,text:document.getElementById('f_text').value.trim()})}
+if(Object.values(r).some(v=>v===undefined||v==='')){toast('Please complete all required fields.','error');return}saveDB();closeModal();renderPortal();toast((edit?'Record updated':'Record added')+' successfully.','success')}
+function deleteRecord(type,id){if(!confirm('Delete this record? This action cannot be undone.'))return;const arr=db[type];const idx=arr.findIndex(x=>String(x.id)===String(id));if(idx<0)return;arr.splice(idx,1);saveDB();renderPortal();toast('Record deleted.','success')}
+function closeModal(){document.getElementById('modal').classList.add('hidden');modalState=null}
+function filterTable(type){let q=(document.querySelector('.search')?.value||'').toLowerCase();if(type==='students'){const rows=db.students.filter(x=>[x.name,x.email,x.program,x.year].join(' ').toLowerCase().includes(q));document.getElementById('managerTable').innerHTML=managerStudentTable(rows,true)}else if(type==='lecturers'){const rows=db.lecturers.filter(x=>[x.name,x.email,x.department].join(' ').toLowerCase().includes(q));document.getElementById('managerTable').innerHTML=lecturerTable(rows)}else if(type==='courses'){const rows=db.courses.filter(x=>[x.id,x.name,x.department].join(' ').toLowerCase().includes(q));document.getElementById('managerTable').innerHTML=courseManagerTable(rows)}else if(type==='classes'){const rows=db.classes.filter(x=>[x.name,x.course,x.lecturer,x.room].join(' ').toLowerCase().includes(q));document.getElementById('managerTable').innerHTML=classManagerTable(rows)}else if(type==='payments'){const rows=db.payments.filter(x=>[x.student,x.method,x.date,x.status].join(' ').toLowerCase().includes(q));document.getElementById('managerTable').innerHTML=paymentManagerTable(rows)}else if(type==='announcements'){const rows=db.announcements.filter(x=>[x.title,x.text,x.type,x.date].join(' ').toLowerCase().includes(q));document.getElementById('managerTable').innerHTML=announcementManagerTable(rows)}}
+function bindDynamic(){document.querySelectorAll('.search').forEach(x=>x.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault()}))}
+document.getElementById('year').textContent=new Date().getFullYear();
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();document.getElementById('sidebar').classList.remove('open')}})
+restoreSession();
 </script>
 </body>
 </html>
