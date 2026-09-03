@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="MIZUHO Institute unified education portal"><meta name="mizuho-build" content="2026.09-hosting-fix">
+<meta name="description" content="MIZUHO Institute unified education portal"><meta name="mizuho-build" content="2026.09.03-hosting-stable">
 <title>MIZUHO Institute | Unified Education Portal</title>
 <style>
 :root{--navy:#092b55;--navy2:#123f73;--blue:#176db5;--gold:#c99836;--gold2:#e6c56f;--bg:#f4f7fb;--card:#fff;--text:#15263d;--muted:#6c7b90;--line:#dfe7f0;--green:#16835b;--red:#c63d3d;--shadow:0 18px 50px rgba(9,43,85,.11);--r:16px}
@@ -66,37 +66,73 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
 
 
 @media(max-width:650px){.login-actions{display:grid;grid-template-columns:1fr 1fr}.login-actions .btn{min-height:44px}.login-form h1{font-size:24px}.role-switch{grid-template-columns:1fr}.modal{padding:18px}.table{min-width:680px}.top-right #sessionName{display:none}.top-right .btn{font-size:11px;padding:9px 10px}}
-.btn.gold {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.footer-stat {
+  transition: transform 0.25s ease;
 }
 
-.btn.gold::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.45),
-    transparent
-  );
-  transform: skewX(-20deg);
-  transition: left 0.6s ease;
+.footer-stat:hover {
+  transform: translateY(-3px);
 }
 
-.btn.gold:hover {
+.footer-stat b {
+  display: block;
+}
+
+.footer-stat span {
+  display: block;
+}
+
+.heart {
+  color: #ef5b5b;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.heart:hover {
+  transform: scale(1.3);
+}
+
+.legal a {
+  transition: color 0.25s ease;
+}
+
+.legal a:hover {
+  color: #ef5b5b;
+}
+
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: color 0.25s ease,
+              transform 0.25s ease;
+}
+
+.trust-badge svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease,
+              color 0.25s ease;
+}
+
+.trust-badge:hover {
+  color: #ef5b5b;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.35);
 }
 
-.btn.gold:hover::before {
-  left: 140%;
+.trust-badge:hover svg {
+  transform: scale(1.15);
 }
 
 </style>
@@ -106,14 +142,14 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
 <div id="public" class="public">
 <header class="top">
   <a class="brand" href="#home"><img id="logoPublic"><span><b>MIZUHO INSTITUTE</b><small>ADVANCING KNOWLEDGE · SHAPING THE FUTURE</small></span></a>
-  <button class="btn gold mobile-nav-toggle" onclick="togglePublicNav()" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav" id="publicNav"><a href="#home" onclick="closePublicNav()">Home</a><a href="#programs" onclick="closePublicNav()">Programs</a><a href="#about" onclick="closePublicNav()">About</a><a href="#contact" onclick="closePublicNav()">Contact</a><button type="button" class="btn gold" onclick="showLogin();closePublicNav()">Enter Portal</button></nav>
+  <button class="btn gold mobile-nav-toggle" onclick="togglePublicNav()" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav" id="publicNav"><a href="#home" onclick="closePublicNav()">Home</a><a href="#programs" onclick="closePublicNav()">Programs</a><a href="#about" onclick="closePublicNav()">About</a><a href="#contact" onclick="closePublicNav()">Contact</a><button type="button" id="enterPortalBtn" class="btn gold">Enter Portal</button></nav>
 </header>
 <section id="home" class="hero">
   <div class="hero-copy">
     <span class="eyebrow">Modern Education · Sri Lanka</span>
     <h1>Advancing <span>Knowledge</span>,<br>Shaping the Future.</h1>
     <p>MIZUHO Institute connects students and institutional management through one modern academic portal. Learn, manage, communicate and track progress from one place.</p>
-    <div class="hero-actions"><button class="btn gold" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">Explore Programs</button><button class="btn soft" onclick="showLogin()">Access Unified Portal</button></div>
+    <div class="hero-actions"><button class="btn gold" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">Explore Programs</button><button type="button" id="accessPortalBtn" class="btn soft">Access Unified Portal</button></div>
     <div class="hero-points"><div>✓ Industry-oriented curriculum</div><div>✓ Practical project-based learning</div><div>✓ Connected academic services</div><div>✓ Integrated institute management</div></div>
   </div>
   <div class="visual"><div class="logo-ring"></div><img id="heroLogo" class="hero-logo"><div class="float f1">🏅 Excellence in Education</div><div class="float f2">🌍 Shaping Global Learners</div></div>
@@ -135,22 +171,278 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
 <div class="footer-brand"><div class="footer-logo"><img id="footerLogo" alt="MIZUHO Institute logo"><span><b>MIZUHO INSTITUTE</b><small>ADVANCING KNOWLEDGE · SHAPING THE FUTURE</small></span></div>
 <p>Empowering learners through practical education, connected academic services and future-focused learning pathways.</p>
 <div class="socials" aria-label="MIZUHO social media links">
-  <a href="#" aria-label="Email" title="Email">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m3.5 6 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+  <!-- Email -->
+  <a
+    class="social-link"
+    href="mailto:hello@mizuho.com"
+    aria-label="Email MIZUHO"
+    title="Email MIZUHO"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect
+        x="3"
+        y="5"
+        width="18"
+        height="14"
+        rx="1.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <path
+        d="m3.5 6 8.5 7 8.5-7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
   </a>
-  <a href="#" aria-label="Facebook" title="Facebook">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h2V4h-2.7C10.1 4 9 5.9 9 8.8V11H6v4h3v5h4v-5h3.2l.8-4H13V9c0-.7.3-1 1-1Z" fill="currentColor"/></svg>
+
+  <!-- Facebook -->
+  <a
+    class="social-link"
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MIZUHO on Facebook"
+    title="Facebook"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="M14 8h2V4h-2.7C10.1 4 9 5.9 9 8.8V11H6v4h3v5h4v-5h3.2l.8-4H13V9c0-.7.3-1 1-1Z"
+        fill="currentColor"
+      />
+    </svg>
   </a>
-  <a href="#" aria-label="LinkedIn" title="LinkedIn">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8H3v11h3V8Zm-1.5-5A1.75 1.75 0 1 0 4.5 6.5 1.75 1.75 0 0 0 4.5 3ZM21 12.7c0-3.3-1.8-4.9-4.2-4.9-1.9 0-2.8 1-3.3 1.7V8h-3v11h3v-5.9c0-1.6.3-3.2 2.3-3.2 1.9 0 1.9 1.8 1.9 3.3V19h3v-6.3Z" fill="currentColor"/></svg>
+
+  <!-- LinkedIn -->
+  <a
+    class="social-link"
+    href="https://www.linkedin.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MIZUHO on LinkedIn"
+    title="LinkedIn"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="M6 8H3v11h3V8Zm-1.5-5A1.75 1.75 0 1 0 4.5 6.5 1.75 1.75 0 0 0 4.5 3ZM21 12.7c0-3.3-1.8-4.9-4.2-4.9-1.9 0-2.8 1-3.3 1.7V8h-3v11h3v-5.9c0-1.6.3-3.2 2.3-3.2 1.9 0 1.9 1.8 1.9 3.3V19h3v-6.3Z"
+        fill="currentColor"
+      />
+    </svg>
   </a>
-  <a href="#" aria-label="Instagram" title="Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.7" r="1.1" fill="currentColor"/></svg>
+
+  <!-- Instagram -->
+  <a
+    class="social-link"
+    href="https://www.instagram.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MIZUHO on Instagram"
+    title="Instagram"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <circle
+        cx="17.4"
+        cy="6.7"
+        r="1.1"
+        fill="currentColor"
+      />
+    </svg>
   </a>
-  <a href="#" aria-label="YouTube" title="YouTube">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8.1a2.8 2.8 0 0 0-2-2C17.2 5.6 12 5.6 12 5.6s-5.2 0-7 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2.5 12 29 29 0 0 0 3 15.9a2.8 2.8 0 0 0 2 2c1.8.5 7 .5 7 .5s5.2 0 7-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .5-3.9 29 29 0 0 0-.5-3.9Z" fill="currentColor"/><path d="m10 9 5 3-5 3V9Z" fill="#071426"/></svg>
+
+  <!-- YouTube -->
+  <a
+    class="social-link"
+    href="https://www.youtube.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MIZUHO on YouTube"
+    title="YouTube"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="M21 8.1a2.8 2.8 0 0 0-2-2C17.2 5.6 12 5.6 12 5.6s-5.2 0-7 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2.5 12 29 29 0 0 0 3 15.9a2.8 2.8 0 0 0 2 2c1.8.5 7 .5 7 .5s5.2 0 7-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .5-3.9 29 29 0 0 0-.5-3.9Z"
+        fill="currentColor"
+      />
+      <path
+        d="m10 9 5 3-5 3V9Z"
+        fill="var(--social-play-color)"
+      />
+    </svg>
   </a>
-</div></div>
+
+</div>
+
+<style>
+  .socials {
+    --social-size: 44px;
+    --social-color: #071426;
+    --social-hover: #ffffff;
+    --social-hover-bg: #071426;
+    --social-border: rgba(7, 20, 38, 0.14);
+    --social-play-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .social-link {
+    position: relative;
+
+    width: var(--social-size);
+    height: var(--social-size);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--social-color);
+    background: transparent;
+
+    border: 1px solid var(--social-border);
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    transition:
+      color 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
+
+    display: block;
+
+    transition: transform 0.25s ease;
+  }
+
+  .social-link:hover {
+    color: var(--social-hover);
+    background: var(--social-hover-bg);
+    border-color: var(--social-hover-bg);
+
+    transform: translateY(-4px);
+
+    box-shadow:
+      0 8px 20px rgba(7, 20, 38, 0.16);
+  }
+
+  .social-link:hover svg {
+    transform: scale(1.08);
+  }
+
+  .social-link:focus-visible {
+    outline: 3px solid rgba(7, 20, 38, 0.3);
+    outline-offset: 4px;
+  }
+
+  .social-link:active {
+    transform: translateY(-1px) scale(0.96);
+  }
+
+  /* Tooltip */
+  .social-link::after {
+    content: attr(title);
+
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+
+    padding: 6px 9px;
+
+    color: #fff;
+    background: #071426;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+      translateX(-50%)
+      translateY(5px);
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s ease;
+
+    z-index: 10;
+  }
+
+  .social-link:hover::after,
+  .social-link:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .socials {
+      --social-size: 40px;
+      gap: 8px;
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  /* Reduced motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .social-link,
+    .social-link svg,
+    .social-link::after {
+      transition: none;
+    }
+
+    .social-link:hover {
+      transform: none;
+    }
+  }
+</style>
+</div>
 <div><h4>Portal</h4><ul class="footer-links">
 <li><span class="footer-icon">▣</span><a href="#home">Dashboard Overview</a></li><li><span class="footer-icon">♟</span><a href="#" onclick="showLogin();return false;">Student Portal</a></li>
 <li><span class="footer-icon">▤</span><a href="#" onclick="showLogin();setRole('manager');return false;">Institution Manager</a></li><li><span class="footer-icon">⌘</span><a href="#programs">Academic Programs</a></li>
@@ -162,22 +454,253 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
 <li><span class="footer-icon">↻</span><a href="#home">Portal Updates</a></li><li><span class="footer-icon">♢</span><a href="#contact">Security & Privacy</a></li>
 </ul></div>
 <div class="footer-contact"><h4>Contact Us</h4>
-<div class="contact-row"><strong>⌖</strong><span>Colombo / Kandy<br>Sri Lanka</span></div><div class="contact-row"><strong>☎</strong><a href="tel:+94110000000">+94 11 000 0000</a></div>
-<div class="contact-row"><strong>✉</strong><a href="mailto:info@mizuho.edu.lk">info@mizuho.edu.lk</a></div><div class="contact-row"><strong>◷</strong><span>Mon – Fri | 8:00 AM – 6:00 PM</span></div>
+<style>
+  .contact-row a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contact-row .location-icon {
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  .contact-row a:hover .location-icon {
+    color: #e53935;
+    transform: scale(1.15);
+  }
+</style>
+
+<div class="contact-row">
+  <a href="https://www.google.com/maps/search/?api=1&query=Colombo%2C%20Sri%20Lanka"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="View Colombo, Sri Lanka on Google Maps">
+
+    <svg class="location-icon"
+         xmlns="http://www.w3.org/2000/svg"
+         width="20"
+         height="20"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         aria-hidden="true">
+
+      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+      <circle cx="12" cy="10" r="3"/>
+
+    </svg>
+
+    <span>
+      Colombo / Kandy<br>
+      Sri Lanka
+    </span>
+
+  </a>
+</div>
+<style>
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-row > a,
+  .contact-row > span {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  .contact-row:hover .contact-icon {
+    color: #e53935;
+    transform: scale(1.15);
+  }
+
+  .contact-row a:hover {
+    color: #e53935;
+  }
+</style>
+
+<!-- Phone -->
+<div class="contact-row">
+  <strong>
+    <svg class="contact-icon"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+               19.79 19.79 0 0 1-8.63-3.07
+               19.5 19.5 0 0 1-6-6
+               19.79 19.79 0 0 1-3.07-8.67
+               A2 2 0 0 1 4.11 2h3
+               a2 2 0 0 1 2 1.72
+               12.84 12.84 0 0 0 .7 2.81
+               2 2 0 0 1-.45 2.11L8.09 9.91
+               a16 16 0 0 0 6 6l1.27-1.27
+               a2 2 0 0 1 2.11-.45
+               12.84 12.84 0 0 0 2.81.7
+               A2 2 0 0 1 22 16.92z"/>
+    </svg>
+  </strong>
+
+  <a href="tel:+94776928542"
+     aria-label="Call +94 77 692 8542">
+    +94 77 692 8542
+  </a>
+</div>
+
+
+<!-- Email -->
+<div class="contact-row">
+  <strong>
+    <svg class="contact-icon"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2"/>
+      <path d="m3 7 9 6 9-6"/>
+    </svg>
+  </strong>
+
+  <a href="mailto:info@mizuho.edu.lk">
+    info@mizuho.edu.lk
+  </a>
+</div>
+
+
+<!-- Opening Hours -->
+<div class="contact-row">
+  <strong>
+    <svg class="contact-icon"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         aria-hidden="true">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5l3 2"/>
+    </svg>
+  </strong>
+
+  <span>
+    Mon – Fri | 8:00 AM – 6:00 PM
+  </span>
+</div>
+
 <div class="footer-label">Subscribe for institute updates:</div><form class="subscribe" onsubmit="event.preventDefault();toast('Thank you! You are subscribed to MIZUHO updates.');this.reset();"><input type="email" placeholder="Enter your email" aria-label="Email address" required><button type="submit" aria-label="Subscribe">➤</button></form>
 </div></div>
-<div class="footer-stats"><div class="footer-stat"><b>2,400+</b><span>Students Supported</span></div><div class="footer-stat"><b>180+</b><span>Certified Instructors</span></div><div class="footer-stat"><b>95+</b><span>Active Courses</span></div><div class="footer-stat"><b>99.8%</b><span>Portal Availability</span></div><div class="footer-stat"><b>v2.3</b><span>Unified Release</span></div></div>
-<div class="footer-bottom"><span class="copyright">© 2026 MIZUHO Institute. All rights reserved. Built with <span style="color:#ef5b5b">♥</span> in Sri Lanka.</span><div class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a><a href="#">Accessibility</a></div></div>
-<div class="trust-badges"><span class="trust-badge">🔒 Secure Portal</span><span class="trust-badge">🛡 Privacy Ready</span><span class="trust-badge">● Reliable Service</span></div>
-</footer>
+<div class="footer-stats">
+  <div class="footer-stat">
+    <b>2,400+</b>
+    <span>Students Supported</span>
+  </div>
+
+  <div class="footer-stat">
+    <b>180+</b>
+    <span>Certified Instructors</span>
+  </div>
+
+  <div class="footer-stat">
+    <b>95+</b>
+    <span>Active Courses</span>
+  </div>
+
+  <div class="footer-stat">
+    <b>99.8%</b>
+    <span>Portal Availability</span>
+  </div>
+
+  <div class="footer-stat">
+    <b>v2.3</b>
+    <span>Unified Release</span>
+  </div>
 </div>
+
+<div class="footer-bottom">
+  <span class="copyright">
+    © 2026 MIZUHO Institute. All rights reserved.
+    Built with <span class="heart">♥</span> in Sri Lanka.
+  </span>
+
+  <div class="legal">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Accessibility</a>
+  </div>
+</div>
+
+<div class="trust-badges">
+
+  <!-- Secure Portal -->
+  <span class="trust-badge">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         aria-hidden="true">
+      <path d="M6 10V8a6 6 0 0 1 12 0v2"/>
+      <rect x="4" y="10" width="16" height="11" rx="2"/>
+      <circle cx="12" cy="15" r="1.5"/>
+      <path d="M12 16.5V18"/>
+    </svg>
+    Secure Portal
+  </span>
+
+  <!-- Privacy Ready -->
+  <span class="trust-badge">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         aria-hidden="true">
+      <path d="M12 3 20 6v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3Z"/>
+      <path d="m8.5 12 2.2 2.2 4.8-5"/>
+    </svg>
+    Privacy Ready
+  </span>
+
+  <!-- Reliable Service -->
+  <span class="trust-badge">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         aria-hidden="true">
+      <circle cx="12" cy="12" r="8"/>
+    </svg>
+    Reliable Service
+  </span>
+
+</div>
+
 
 <div id="loginPage" class="login hidden">
 <div class="login-box">
   <div class="login-art"><div><img id="loginLogo"><h2>One Portal. Every Role.</h2><p>A single sign-in for MIZUHO students and institution managers, with role-based access to the appropriate academic tools.</p></div></div>
   <div class="login-form">
     <span class="eyebrow">Unified Access</span><h1 id="loginHeading">Welcome to MIZUHO Portal</h1><p class="muted" id="loginHint">Select your role and sign in.</p>
-    <div class="role-switch"><button id="studentRole" class="role active" onclick="setRole('student')">🎓 <b>Student</b><span class="muted">Learning & academic services</span></button><button id="managerRole" class="role" onclick="setRole('manager')">🏢 <b>Institution Manager</b><span class="muted">Administration & analytics</span></button></div>
+    <div class="role-switch"><button type="button" id="studentRole" class="role active" onclick="setRole('student')">🎓 <b>Student</b><span class="muted">Learning & academic services</span></button><button type="button" id="managerRole" class="role" onclick="setRole('manager')">🏢 <b>Institution Manager</b><span class="muted">Administration & analytics</span></button></div>
     <form onsubmit="login(event)">
       <div class="field"><label>Username or Email</label><input id="user" autocomplete="username" required></div>
       <div class="field"><label>Password</label><input id="pass" type="password" autocomplete="current-password" required></div>
@@ -246,9 +769,6 @@ function setStore(key,val,which='local'){try{const store=which==='session'?windo
 function togglePublicNav(){const n=el('publicNav'),b=document.querySelector('.mobile-nav-toggle');if(!n)return;n.classList.toggle('mobile-open');if(b)b.setAttribute('aria-expanded',String(n.classList.contains('mobile-open')))}
 function closePublicNav(){const n=el('publicNav'),b=document.querySelector('.mobile-nav-toggle');if(n)n.classList.remove('mobile-open');if(b)b.setAttribute('aria-expanded','false')}
 function showLogin(){closePublicNav();el('public').classList.add('hidden');el('loginPage').classList.remove('hidden');setRole('student');setTimeout(()=>el('user')?.focus(),50)}
-// Backward compatibility for older hosted/cached markup that calls openLogin().
-window.showLogin=showLogin;
-window.openLogin=showLogin;
 function showPublic(){el('loginPage').classList.add('hidden');el('portal').classList.add('hidden');el('public').classList.remove('hidden');closePublicNav();window.scrollTo(0,0)}
 function setRole(r){role=r==='manager'?'manager':'student';el('studentRole').classList.toggle('active',role==='student');el('managerRole').classList.toggle('active',role==='manager');el('signupLink').classList.toggle('hidden',role!=='student');el('loginHeading').textContent=role==='student'?'Welcome to MIZUHO Student Portal':'Welcome to MIZUHO Institute Manager Portal';el('loginHint').textContent=role==='student'?'Select your role and sign in to access academic services.':'Select your role and sign in to manage institute operations.';el('demoInfo').innerHTML=role==='student'?'<b>Demo:</b> student / student123':'<b>Demo:</b> manager / manager123';el('user').value='';el('pass').value=''}
 function selectRole(r){setRole(r)}
@@ -310,13 +830,45 @@ function remove(col,id){if(confirm('Delete this record?')){db[col]=db[col].filte
 function openModal(body){el('modal').innerHTML=`<div class="modal-head"><span></span><button class="close" type="button" onclick="closeModal()" aria-label="Close">×</button></div>${body}`;el('modalBg').classList.add('show');setTimeout(()=>el('modal').querySelector('input,select,textarea,button:not(.close)')?.focus(),30)}
 function closeModal(){el('modalBg').classList.remove('show');el('modal').innerHTML=''}
 function toast(msg,type='info'){const t=el('toast');t.textContent=msg;t.className='toast show';if(type==='error')t.style.background='#9d2933';else if(type==='success')t.style.background='#126a4c';else t.style.background='#102f55';clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>{t.classList.remove('show')},2800)}
-window.addEventListener('error',function(e){
-  console.error('MIZUHO Portal error:',e.error||e.message);
+/* Portal entry wiring: uses buttons instead of inline navigation handlers.
+   This prevents accidental navigation/submission on hosted deployments. */
+window.showLogin = showLogin;
+window.openLogin = showLogin;
+
+function enterPortal(){
+  try{
+    showLogin();
+  }catch(error){
+    console.error('MIZUHO: unable to open the portal login screen.', error);
+    const publicPage=document.getElementById('public');
+    const loginPage=document.getElementById('loginPage');
+    if(publicPage) publicPage.classList.add('hidden');
+    if(loginPage) loginPage.classList.remove('hidden');
+  }
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  const enter=document.getElementById('enterPortalBtn');
+  const access=document.getElementById('accessPortalBtn');
+  if(enter) enter.addEventListener('click',enterPortal);
+  if(access) access.addEventListener('click',enterPortal);
+
+  try{
+    restore();
+  }catch(error){
+    console.error('MIZUHO: session restore failed.',error);
+    try{
+      localStorage.removeItem('mizuhoSession');
+      sessionStorage.removeItem('mizuhoSession');
+    }catch(_){}
+    const publicPage=document.getElementById('public');
+    const loginPage=document.getElementById('loginPage');
+    const portal=document.getElementById('portal');
+    if(publicPage) publicPage.classList.remove('hidden');
+    if(loginPage) loginPage.classList.add('hidden');
+    if(portal) portal.classList.add('hidden');
+  }
 });
-window.addEventListener('unhandledrejection',function(e){
-  console.error('MIZUHO Portal promise error:',e.reason);
-});
-restore();
 </script>
 </body>
 </html>
