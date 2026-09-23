@@ -1,0 +1,671 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="MIZUHO Institute — Learn, Grow, Build Your Future"><meta name="theme-color" content="#1677e8"><title>MIZUHO Institute | Home</title><style>:root{
+  --navy:#102a56; --blue:#1677e8; --sky:#eaf7ff; --green:#43b965;
+  --yellow:#ffbe2e; --purple:#8b4ddd; --coral:#ef6b5d; --ink:#182846;
+  --muted:#63718a; --white:#fff; --border:#dce8f4; --shadow:0 16px 45px rgba(16,42,86,.10);
+  --radius:22px; --max:1180px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+a{text-decoration:none;color:inherit}.container{width:min(var(--max),92%);margin:auto}
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,232,244,.8)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;color:var(--navy)}
+.logo-mark{width:45px;height:45px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.logo-mark i{display:block;border-radius:7px}.logo-mark i:nth-child(1){background:var(--blue)}.logo-mark i:nth-child(2){background:var(--yellow)}.logo-mark i:nth-child(3){background:var(--green)}.logo-mark i:nth-child(4){background:var(--purple)}
+.logo small{display:block;color:var(--muted);font-weight:600;font-size:.68rem;letter-spacing:.4px}
+.nav-links{display:flex;align-items:center;gap:25px;font-size:.92rem;font-weight:700}
+.nav-links a{padding:25px 0;position:relative}.nav-links a.active,.nav-links a:hover{color:var(--blue)}
+.nav-links a.active:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:3px;border-radius:3px;background:var(--blue)}
+.actions{display:flex;gap:10px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:999px;padding:11px 20px;font-weight:800;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,119,232,.18)}
+.btn-primary{background:var(--blue);color:#fff}.btn-outline{border-color:var(--blue);color:var(--blue);background:#fff}
+.menu-btn{display:none;border:0;background:none;font-size:1.5rem;color:var(--navy)}
+.hero{background:linear-gradient(120deg,#eaf8ff,#f8fbff);overflow:hidden;position:relative}
+.hero-grid{min-height:590px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.eyebrow{display:inline-block;background:#d9f0ff;color:#0c6acb;padding:6px 13px;border-radius:999px;font-size:.82rem;font-weight:800}
+h1{font-size:clamp(2.6rem,5vw,4.6rem);line-height:1.02;margin:18px 0;color:var(--navy)}
+h1 span{color:var(--blue)} h2{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.15;margin:0 0 12px;color:var(--navy)}
+h3{margin:8px 0;color:var(--navy)}p{color:var(--muted)}
+.hero p{font-size:1.08rem;max-width:600px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.puzzle-art{position:relative;min-height:460px}.piece{position:absolute;display:grid;place-items:center;border-radius:20px;color:#fff;font-size:2rem;font-weight:900;box-shadow:var(--shadow);border:5px solid rgba(255,255,255,.8)}
+.p1{width:250px;height:210px;right:35px;top:35px;background:var(--blue);transform:rotate(3deg)}
+.p2{width:230px;height:190px;left:30px;top:130px;background:var(--yellow);transform:rotate(-5deg)}
+.p3{width:250px;height:210px;right:65px;bottom:15px;background:var(--green);transform:rotate(-3deg)}
+.p4{width:210px;height:175px;left:15px;bottom:45px;background:var(--purple);transform:rotate(4deg)}
+.piece .inner{font-size:1rem;text-align:center;max-width:150px}.piece .inner strong{display:block;font-size:1.35rem}.piece .inner span{font-size:.78rem;font-weight:600}
+.floating-piece{position:absolute;width:55px;height:55px;border-radius:12px;background:var(--yellow);right:0;top:10px;transform:rotate(18deg)}
+.section{padding:82px 0}.section.alt{background:#f4fbff}.center{text-align:center}.lead{max-width:720px;margin:0 auto 35px}
+.features{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:0 8px 28px rgba(16,42,86,.05);transition:.25s}.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.icon{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:1.35rem;font-weight:900;margin-bottom:15px}.blue{background:var(--blue)}.green{background:var(--green)}.yellow{background:var(--yellow)}.purple{background:var(--purple)}.coral{background:var(--coral)}
+.program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.program-card{min-height:235px}.program-card .learn{color:var(--blue);font-weight:800;margin-top:18px;display:inline-block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:0}.stat{padding:35px;text-align:center;color:#fff}.stat:nth-child(1){background:#1879d9}.stat:nth-child(2){background:#43b965}.stat:nth-child(3){background:#ffbe2e}.stat:nth-child(4){background:#8b4ddd}.stat strong{display:block;font-size:2.4rem}.stat span{font-weight:700}
+.cta{background:linear-gradient(110deg,#eaf8ff,#fff);border:1px solid var(--border);border-radius:30px;padding:45px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.quote{font-size:.95rem}.person{display:flex;align-items:center;gap:12px;margin-top:18px}.avatar{width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,#d8efff,#e8dbff);display:grid;place-items:center;font-weight:900;color:var(--navy)}
+.page-hero{padding:75px 0;background:linear-gradient(120deg,#eaf8ff,#fff);border-bottom:1px solid var(--border)}
+.page-hero p{max-width:720px}.breadcrumb{color:var(--blue);font-weight:800;font-size:.9rem}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.checklist{padding:0;list-style:none}.checklist li{margin:13px 0;font-weight:700}.checklist li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden}.table th,.table td{padding:15px;border-bottom:1px solid var(--border);text-align:left}.table th{background:#eff8ff;color:var(--navy)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field input,.field select,.field textarea{font:inherit;padding:13px 15px;border:1px solid var(--border);border-radius:13px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(22,119,232,.08)}
+.notice{padding:15px 18px;border-radius:14px;background:#eef8ff;border-left:4px solid var(--blue);margin-bottom:20px}
+.footer{background:#0d2548;color:#fff;padding:55px 0 20px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px}.footer p,.footer a{color:#c6d3e6}.footer h3{color:#fff}.footer-links{display:grid;gap:9px}.footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:35px;padding-top:18px;display:flex;justify-content:space-between;gap:15px;font-size:.86rem;color:#c6d3e6}
+.modal{position:fixed;inset:0;background:rgba(5,18,38,.62);display:none;place-items:center;z-index:2000;padding:20px}.modal.open{display:grid}.modal-box{background:#fff;border-radius:24px;padding:30px;width:min(470px,100%);position:relative}.close{position:absolute;right:18px;top:14px;border:0;background:none;font-size:1.6rem;cursor:pointer}
+.toast{position:fixed;right:20px;bottom:20px;background:#102a56;color:#fff;padding:14px 18px;border-radius:13px;box-shadow:var(--shadow);transform:translateY(100px);opacity:0;transition:.3s;z-index:3000}.toast.show{transform:none;opacity:1}
+@media(max-width:1000px){.features{grid-template-columns:repeat(3,1fr)}.program-grid{grid-template-columns:repeat(2,1fr)}.nav-links{gap:14px}.actions{display:none}}
+@media(max-width:760px){.menu-btn{display:block}.nav-links{display:none;position:absolute;left:0;right:0;top:76px;background:#fff;padding:15px 5%;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}.nav-links a{padding:9px 0}.nav-links a.active:after{display:none}.hero-grid,.split{grid-template-columns:1fr}.hero-grid{padding:65px 0}.puzzle-art{min-height:390px}.features,.program-grid,.testimonials{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.cta{flex-direction:column;align-items:flex-start}.footer-grid{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(max-width:480px){.stats{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.p1{width:210px}.p2{width:185px;left:0}.p3{width:210px}.p4{width:165px}}
+
+/* Single-file application */
+.single-page-section{display:none}.single-page-section.page-visible{display:block}
+
+/* =========================================================
+   MOBILE COMPATIBILITY ENHANCEMENTS
+   Optimized for phones, tablets and touch screens.
+   ========================================================= */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  min-width: 0;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, textarea {
+  max-width: 100%;
+}
+
+button, .btn, a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  :root {
+    --max: 94%;
+  }
+
+  .container {
+    width: min(94%, 760px);
+  }
+
+  .nav {
+    height: 68px;
+  }
+
+  .logo-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo {
+    font-size: .92rem;
+  }
+
+  .logo small {
+    font-size: .6rem;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: .84rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 65px 0 45px;
+  }
+
+  .hero-grid > div:first-child {
+    text-align: center;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .puzzle-art {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    min-height: 400px;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .program-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phones */
+@media (max-width: 700px) {
+  :root {
+    --radius: 18px;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav {
+    height: 64px;
+    gap: 8px;
+  }
+
+  .logo {
+    min-width: 0;
+    gap: 7px;
+  }
+
+  .logo-mark {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+
+  .logo > span:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .logo small {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 165px;
+  }
+
+  .actions {
+    display: none;
+  }
+
+  .menu-btn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.35rem;
+  }
+
+  .menu-btn:active {
+    background: #eaf4ff;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 12px 20px 18px;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 14px 30px rgba(16,42,86,.12);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    z-index: 1100;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 10px;
+    border-radius: 10px;
+    font-size: .95rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: #eef7ff;
+  }
+
+  .nav-links a.active:after {
+    display: none;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 11vw, 3.25rem);
+    line-height: 1.06;
+    margin-top: 14px;
+  }
+
+  h2 {
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+  }
+
+  h3 {
+    font-size: 1.08rem;
+  }
+
+  p {
+    font-size: .95rem;
+  }
+
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    padding: 48px 0 20px;
+    gap: 4px;
+  }
+
+  .eyebrow {
+    font-size: .72rem;
+    padding: 5px 10px;
+  }
+
+  .hero p {
+    font-size: .98rem;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    margin-top: 20px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .puzzle-art {
+    min-height: 330px;
+    width: 100%;
+    transform: scale(.9);
+    transform-origin: center top;
+    margin-bottom: -25px;
+  }
+
+  .piece {
+    border-width: 4px;
+    border-radius: 16px;
+  }
+
+  .p1 {
+    width: 185px;
+    height: 150px;
+    right: 0;
+    top: 15px;
+  }
+
+  .p2 {
+    width: 170px;
+    height: 140px;
+    left: 0;
+    top: 85px;
+  }
+
+  .p3 {
+    width: 185px;
+    height: 150px;
+    right: 18px;
+    bottom: 0;
+  }
+
+  .p4 {
+    width: 155px;
+    height: 128px;
+    left: 12px;
+    bottom: 15px;
+  }
+
+  .piece .inner {
+    font-size: .85rem;
+    max-width: 120px;
+  }
+
+  .piece .inner strong {
+    font-size: 1.05rem;
+  }
+
+  .piece .inner span {
+    font-size: .64rem;
+    line-height: 1.3;
+  }
+
+  .floating-piece {
+    width: 38px;
+    height: 38px;
+    right: 4px;
+    top: 0;
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .lead {
+    margin-bottom: 26px;
+  }
+
+  .features,
+  .program-grid,
+  .testimonials,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .features {
+    gap: 13px;
+  }
+
+  .card {
+    padding: 21px;
+  }
+
+  .program-card {
+    min-height: auto;
+  }
+
+  .program-grid {
+    gap: 14px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat {
+    padding: 24px 12px;
+  }
+
+  .stat strong {
+    font-size: 1.8rem;
+  }
+
+  .stat span {
+    font-size: .78rem;
+  }
+
+  .cta {
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+
+  .cta .btn {
+    width: 100%;
+  }
+
+  .page-hero {
+    padding: 48px 0 40px;
+  }
+
+  .page-hero h1 {
+    margin-bottom: 12px;
+  }
+
+  .split {
+    gap: 25px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 46px;
+    font-size: 16px; /* prevents iOS Safari zoom */
+  }
+
+  .field textarea {
+    min-height: 125px;
+  }
+
+  .field .btn,
+  form .btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .table-wrap {
+    margin-left: -2px;
+    margin-right: -2px;
+  }
+
+  .table {
+    min-width: 620px;
+  }
+
+  .footer {
+    padding: 42px 0 18px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-size: .78rem;
+  }
+
+  .toast {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    text-align: center;
+  }
+}
+
+/* Small phones */
+@media (max-width: 390px) {
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .logo {
+    font-size: .82rem;
+  }
+
+  .logo-mark {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo small {
+    font-size: .54rem;
+    max-width: 135px;
+  }
+
+  .hero-grid {
+    padding-top: 38px;
+  }
+
+  .hero-actions {
+    gap: 9px;
+  }
+
+  .puzzle-art {
+    min-height: 285px;
+    transform: scale(.78);
+    margin-bottom: -65px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    padding: 20px;
+  }
+
+  .stat strong {
+    font-size: 1.65rem;
+  }
+
+  .section {
+    padding: 45px 0;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
+
+/* Touch-friendly devices */
+@media (hover:none) and (pointer:coarse) {
+  .card:hover,
+  .btn:hover {
+    transform: none;
+    box-shadow: inherit;
+  }
+
+  .btn,
+  .nav-links a,
+  .menu-btn {
+    min-height: 44px;
+  }
+
+  .card {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+</style></head><body><div id="site-header"></div><main id="page-home" class="single-page-section" data-page="home"><section class="hero"><div class="container hero-grid">
+  <div><span class="eyebrow">Quality Education for a Brighter Tomorrow</span>
+    <h1>Excellence in Education.<br><span>Shaping Global Learners.</span></h1>
+    <p>At MIZUHO Institute, we provide modern, flexible and industry-relevant education to help you build the skills, confidence and opportunities for a successful future.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="programs.html">Explore Our Programs →</a><a class="btn btn-outline" href="admissions.html">Join Now</a></div>
+  </div>
+  <div class="puzzle-art"><div class="floating-piece"></div><div class="piece p1"><div class="inner">🎓<strong>Dream Big</strong><span>Every skill is a piece of your future.</span></div></div><div class="piece p2"><div class="inner">📚<strong>Learn</strong><span>Build knowledge step by step.</span></div></div><div class="piece p3"><div class="inner">🌍<strong>Connect</strong><span>Think beyond borders.</span></div></div><div class="piece p4"><div class="inner">🚀<strong>Grow</strong><span>Turn potential into progress.</span></div></div></div>
+</div></section>
+
+<section class="section"><div class="container"><div class="center"><h2>Why Choose MIZUHO Institute?</h2><p class="lead">We combine expert guidance, modern resources and a supportive learning environment to help you achieve your goals.</p></div>
+<div class="features">
+  <div class="card"><div class="icon blue">🎓</div><h3>Experienced Faculty</h3><p>Learn from qualified and passionate experts.</p></div>
+  <div class="card"><div class="icon green">📖</div><h3>Flexible Learning</h3><p>Choose on-campus, online or hybrid options.</p></div>
+  <div class="card"><div class="icon yellow">👥</div><h3>Supportive Community</h3><p>Be part of a friendly and inclusive environment.</p></div>
+  <div class="card"><div class="icon purple">⚙</div><h3>Industry Focused</h3><p>Gain practical skills for the real world.</p></div>
+  <div class="card"><div class="icon coral">🌐</div><h3>Global Opportunities</h3><p>Open doors to international pathways and careers.</p></div>
+</div></div></section>
+
+<section class="section alt"><div class="container"><div class="center"><h2>Academic Pathways</h2><p class="lead">Explore tuition classes and programs designed for your success.</p></div>
+<div class="program-grid">
+  <div class="card program-card"><div class="icon blue">💻</div><h3>ICT & Computer Science</h3><p>Programming, web development, networks and more.</p><a class="learn" href="programs.html#ict">Learn More →</a></div>
+  <div class="card program-card"><div class="icon green">📊</div><h3>Business & Management</h3><p>Build leadership and entrepreneurial skills.</p><a class="learn" href="programs.html#business">Learn More →</a></div>
+  <div class="card program-card"><div class="icon yellow">⚛</div><h3>Science & Engineering</h3><p>Prepare for a future in innovation and technology.</p><a class="learn" href="programs.html#science">Learn More →</a></div>
+  <div class="card program-card"><div class="icon purple">🗣</div><h3>Language & Communication</h3><p>Improve language skills and global communication.</p><a class="learn" href="programs.html#language">Learn More →</a></div>
+</div></div></section>
+
+<div class="stats"><div class="stat"><strong>2,500+</strong><span>Happy Students</span></div><div class="stat"><strong>15+</strong><span>Programs Offered</span></div><div class="stat"><strong>150+</strong><span>Expert Instructors</span></div><div class="stat"><strong>10+</strong><span>Countries Represented</span></div></div>
+
+<section class="section"><div class="container"><div class="cta"><div><span class="eyebrow">Your Future Starts Here</span><h2>Take the First Step Today</h2><p>Join a learning community that believes in your potential.</p><a class="btn btn-primary" href="admissions.html">Get Started →</a></div><div style="font-size:5rem">🧩</div></div></div></section>
+
+<section class="section alt"><div class="container"><div class="center"><h2>What Our Students Say</h2><p class="lead">Real stories. Real progress.</p></div><div class="testimonials">
+<div class="card"><p class="quote">“MIZUHO Institute gave me the confidence and skills to build my dream career. The teachers are amazing!”</p><div class="person"><div class="avatar">NP</div><div><b>Nethmi Perera</b><small><br>ICT & Computer Science</small></div></div></div>
+<div class="card"><p class="quote">“The flexible learning options helped me balance my studies and work. Highly recommended!”</p><div class="person"><div class="avatar">KS</div><div><b>Kasun Silva</b><small><br>Business Management</small></div></div></div>
+<div class="card"><p class="quote">“The supportive environment and practical training made all the difference in my journey.”</p><div class="person"><div class="avatar">DF</div><div><b>Dilini Fernando</b><small><br>Science & Engineering</small></div></div></div>
+</div></div></section></main><main id="page-about" class="single-page-section" data-page="about"><section class="page-hero"><div class="container"><div class="breadcrumb">Home / About</div><h1>Building learners for a <span>changing world.</span></h1><p>MIZUHO Institute brings together practical education, experienced educators and a learner-first culture.</p></div></section>
+<section class="section"><div class="container split"><div><h2>Our mission</h2><p>We help learners develop knowledge, professional skills and confidence through accessible, modern education.</p><ul class="checklist"><li>Industry-relevant curriculum</li><li>Flexible study pathways</li><li>Practical projects and assessments</li><li>Student-focused academic support</li></ul></div><div class="card" style="background:linear-gradient(135deg,#eaf8ff,#fff)"><div class="icon blue">🧩</div><h3>Every learner is a piece of the bigger picture.</h3><p>Our puzzle-inspired identity represents how knowledge, experience, communication and creativity connect to create a complete professional.</p></div></div></section>
+<section class="section alt"><div class="container"><div class="center"><h2>Our values</h2><p class="lead">The principles behind the learning experience.</p></div><div class="features"><div class="card"><div class="icon blue">🎯</div><h3>Purpose</h3><p>Learning should lead to meaningful goals.</p></div><div class="card"><div class="icon green">🤝</div><h3>Inclusion</h3><p>Every learner deserves respect and support.</p></div><div class="card"><div class="icon yellow">💡</div><h3>Innovation</h3><p>We embrace better ways to learn and work.</p></div><div class="card"><div class="icon purple">🌍</div><h3>Global Mindset</h3><p>We prepare learners for connected careers.</p></div><div class="card"><div class="icon coral">⭐</div><h3>Excellence</h3><p>We continuously improve our standards.</p></div></div></div></section></main><main id="page-programs" class="single-page-section" data-page="programs"><section class="page-hero"><div class="container"><div class="breadcrumb">Home / Programs</div><h1>Find your <span>academic pathway.</span></h1><p>Explore programs and tuition classes across technology, business, science and communication.</p></div></section>
+<section class="section"><div class="container">
+<div id="ict" class="card" style="margin-bottom:20px"><h2>ICT & Computer Science</h2><p>Build practical foundations for modern digital careers.</p><div class="program-grid"><div><h3>Web Development</h3><p>HTML, CSS, JavaScript and responsive interfaces.</p></div><div><h3>Programming</h3><p>Problem solving, OOP and software development.</p></div><div><h3>Database Systems</h3><p>SQL, data modeling and application integration.</p></div><div><h3>Computer Networks</h3><p>Networking concepts, protocols and infrastructure.</p></div></div></div>
+<div id="business" class="card" style="margin-bottom:20px"><h2>Business & Management</h2><p>Develop commercial awareness, leadership and entrepreneurial capability.</p><div class="program-grid"><div><h3>Business Fundamentals</h3><p>Management, marketing and organizational concepts.</p></div><div><h3>Entrepreneurship</h3><p>From idea validation to business planning.</p></div><div><h3>Digital Business</h3><p>Technology-enabled business models and strategy.</p></div><div><h3>Leadership</h3><p>Communication, teamwork and decision-making.</p></div></div></div>
+<div id="science" class="card" style="margin-bottom:20px"><h2>Science & Engineering</h2><p>Strengthen analytical thinking and technical foundations.</p><div class="program-grid"><div><h3>Applied Science</h3><p>Scientific methods and practical applications.</p></div><div><h3>Engineering Foundations</h3><p>Mathematics, physics and engineering concepts.</p></div><div><h3>Technology</h3><p>Explore emerging technologies and innovation.</p></div><div><h3>Project Practice</h3><p>Turn theory into structured practical work.</p></div></div></div>
+<div id="language" class="card"><h2>Language & Communication</h2><p>Build clear communication for academic and professional environments.</p><div class="program-grid"><div><h3>English</h3><p>Grammar, vocabulary, writing and speaking.</p></div><div><h3>Academic Writing</h3><p>Research, structure and professional writing.</p></div><div><h3>Presentation Skills</h3><p>Confident delivery and visual communication.</p></div><div><h3>Communication</h3><p>Interpersonal and workplace communication.</p></div></div></div>
+</div></section></main><main id="page-admissions" class="single-page-section" data-page="admissions"><section class="page-hero"><div class="container"><div class="breadcrumb">Home / Admissions</div><h1>Start your <span>next chapter.</span></h1><p>Complete the interest form and our admissions team can guide you through the next steps.</p></div></section>
+<section class="section"><div class="container split"><div><h2>Admission process</h2><div class="card"><h3>01 · Choose a pathway</h3><p>Select a program that matches your goals.</p><h3>02 · Submit your details</h3><p>Send the form with your preferred study option.</p><h3>03 · Guidance call</h3><p>Discuss entry requirements, schedule and fees.</p><h3>04 · Confirm enrollment</h3><p>Complete the enrollment process and begin learning.</p></div></div>
+<div class="card"><h2>Request information</h2><form data-demo><div class="form-grid"><label class="field"><b>Full name</b><input required placeholder="Your name"></label><label class="field"><b>Email</b><input required type="email" placeholder="you@example.com"></label><label class="field"><b>Phone</b><input placeholder="+94 ..."></label><label class="field"><b>Program</b><select required><option value="">Choose...</option><option>ICT & Computer Science</option><option>Business & Management</option><option>Science & Engineering</option><option>Language & Communication</option></select></label><label class="field full"><b>Message</b><textarea rows="5" placeholder="Tell us what you want to study..."></textarea></label><label class="field full"><button class="btn btn-primary" type="submit">Submit Application Interest →</button></label></div></form></div></div></section>
+<section class="section alt" id="faq"><div class="container"><div class="center"><h2>Frequently Asked Questions</h2><p class="lead">Quick answers for prospective students.</p></div><div class="program-grid"><div class="card"><h3>Can I study online?</h3><p>Selected pathways can be delivered online or in hybrid formats.</p></div><div class="card"><h3>Are there tuition classes?</h3><p>Yes. Program-specific tuition and revision classes can be offered depending on the pathway.</p></div><div class="card"><h3>How do I apply?</h3><p>Use the form above or contact the admissions team.</p></div><div class="card"><h3>Can I speak with an advisor?</h3><p>Yes. Request a guidance call through the admissions form.</p></div></div></div></section></main><main id="page-student" class="single-page-section" data-page="student"><section class="page-hero"><div class="container"><div class="breadcrumb">Home / Student Portal</div><h1>Your learning <span>dashboard.</span></h1><p>Access a simple demonstration portal for courses, announcements and student support.</p></div></section>
+<section class="section"><div class="container split"><div class="card"><div class="icon blue">🔐</div><h2>Student Login</h2><form data-demo><div class="field"><b>Student email</b><input type="email" required placeholder="student@example.com"></div><br><div class="field"><b>Password</b><input type="password" required placeholder="••••••••"></div><br><button class="btn btn-primary" type="submit">Login →</button></form><p style="font-size:.85rem">Demo only: this front-end form does not connect to a real authentication server.</p></div>
+<div><h2>Portal features</h2><div class="program-grid"><div class="card"><div class="icon green">📚</div><h3>My Courses</h3><p>View current modules and learning resources.</p></div><div class="card"><div class="icon yellow">📅</div><h3>Schedule</h3><p>Keep track of classes and upcoming activities.</p></div><div class="card"><div class="icon purple">📈</div><h3>Progress</h3><p>Review learning milestones and assessments.</p></div><div class="card"><div class="icon coral">💬</div><h3>Support</h3><p>Contact your academic support team.</p></div></div></div></div></section></main><main id="page-contact" class="single-page-section" data-page="contact"><section class="page-hero"><div class="container"><div class="breadcrumb">Home / Contact</div><h1>Let's build your <span>next step.</span></h1><p>Have a question about programs, admissions or student support? Send us a message.</p></div></section>
+<section class="section"><div class="container split"><div><h2>Contact information</h2><div class="card"><h3>📍 Colombo, Sri Lanka</h3><p>Visit our admissions desk during office hours.</p><h3>✉ hello@mizuho.example</h3><p>For general inquiries and program information.</p><h3>☎ +94 11 000 0000</h3><p>Monday–Friday, 8:30 AM–5:00 PM.</p></div></div><div class="card"><h2>Send a message</h2><form data-demo><div class="form-grid"><label class="field"><b>Name</b><input required placeholder="Your name"></label><label class="field"><b>Email</b><input required type="email" placeholder="you@example.com"></label><label class="field full"><b>Subject</b><input required placeholder="How can we help?"></label><label class="field full"><b>Message</b><textarea required rows="7" placeholder="Write your message..."></textarea></label><label class="field full"><button class="btn btn-primary" type="submit">Send Message →</button></label></div></form></div></div></section></main><div id="site-footer"></div><script>
+const pageNames={home:"Home",about:"About Us",programs:"Programs",admissions:"Admissions",student:"Student Portal",contact:"Contact"};
+function setActivePage(page,updateHash=true){if(!pageNames[page])page="home";document.querySelectorAll(".single-page-section").forEach(s=>s.classList.toggle("page-visible",s.dataset.page===page));document.querySelectorAll("[data-page-link]").forEach(a=>a.classList.toggle("active",a.dataset.pageLink===page));if(updateHash)history.replaceState(null,"","#"+page);window.scrollTo({top:0,behavior:"smooth"});document.querySelector("#navLinks")?.classList.remove("open");document.title=pageNames[page]+" | MIZUHO Institute";}
+function pageFromHash(){const h=location.hash.slice(1);return pageNames[h]?h:"home";}
+function showToast(message){let t=document.querySelector("#toast");if(!t){t=document.createElement("div");t.id="toast";t.className="toast";document.body.appendChild(t)}t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2800)}
+document.addEventListener("DOMContentLoaded",()=>{
+const header=document.querySelector("#site-header");header.innerHTML=`<header class="site-header"><div class="container nav"><a class="logo" href="#home" data-page-link="home"><span class="logo-mark"><i></i><i></i><i></i><i></i></span><span>MIZUHO Institute<small>Learn · Grow · Build Your Future</small></span></a><button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button><nav class="nav-links" id="navLinks">${Object.entries(pageNames).map(([k,n])=>`<a href="#${k}" data-page-link="${k}">${n}</a>`).join("")}</nav><div class="actions"><a class="btn btn-primary" href="#admissions" data-page-link="admissions">Sign Up</a><a class="btn btn-outline" href="#student" data-page-link="student">Login</a></div></div></header>`;
+const footer=document.querySelector("#site-footer");footer.innerHTML=`<footer class="footer"><div class="container"><div class="footer-grid"><div><a class="logo" href="#home" data-page-link="home"><span class="logo-mark"><i></i><i></i><i></i><i></i></span><span style="color:#fff">MIZUHO Institute<small style="color:#c6d3e6">Learn · Grow · Build Your Future</small></span></a><p>Modern, flexible and industry-relevant education designed to help learners build confident futures.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="#about" data-page-link="about">About Us</a><a href="#programs" data-page-link="programs">Programs</a><a href="#admissions" data-page-link="admissions">Admissions</a></div></div><div><h3>Student</h3><div class="footer-links"><a href="#student" data-page-link="student">Student Portal</a><a href="#contact" data-page-link="contact">Support</a><a href="#admissions" data-page-link="admissions">FAQs</a></div></div><div><h3>Contact</h3><div class="footer-links"><a href="mailto:hello@mizuho.example">hello@mizuho.example</a><a href="tel:+94110000000">+94 11 000 0000</a><span>Colombo, Sri Lanka</span></div></div></div><div class="footer-bottom"><span>© 2026 MIZUHO Institute. All rights reserved.</span><span>Software Engineer K.G.Irosh Nirmal</span></div></div></footer>`;
+document.querySelector("#menuBtn").addEventListener("click",()=>document.querySelector("#navLinks").classList.toggle("open"));
+document.addEventListener("click",e=>{const l=e.target.closest("[data-page-link]");if(l){e.preventDefault();setActivePage(l.dataset.pageLink)}});
+document.querySelectorAll("form[data-demo]").forEach(f=>f.addEventListener("submit",e=>{e.preventDefault();f.reset();showToast("Thank you! Your request has been submitted.")}));
+setActivePage(pageFromHash(),false);
+});
+window.addEventListener("hashchange",()=>setActivePage(pageFromHash(),false));
+
+/* Mobile robustness: close the menu when navigating or resizing to desktop. */
+window.addEventListener("resize",()=>{
+  if(window.innerWidth > 700){
+    document.getElementById("navLinks")?.classList.remove("open");
+  }
+});
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="Escape"){
+    document.getElementById("navLinks")?.classList.remove("open");
+    document.querySelectorAll(".modal.open").forEach(m=>m.classList.remove("open"));
+  }
+});
+
+</script></body></html>
